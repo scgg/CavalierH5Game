@@ -2,22 +2,19 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        rank:{
-            default:null,
-            type:cc.Node,
-            displayName:'RankBtn'
-        },
         
     },
 
     // use this for initialization
     onLoad: function () {
-        
+        setTimeout(this.d,5000);
     },
-    
-    ToRank: function () {
-        cc.director.loadScene('Rank');
+
+    d:function(){
+        cc.director.loadScene('GameOne');
     },
+
+
 
     // called every frame, uncomment this function to activate update callback
     // update: function (dt) {
