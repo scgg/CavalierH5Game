@@ -20,8 +20,8 @@
       "height": 297,
       "rawWidth": 12,
       "rawHeight": 300,
-      "borderTop": 0,
-      "borderBottom": 0,
+      "borderTop": 8,
+      "borderBottom": 8,
       "borderLeft": 0,
       "borderRight": 0,
       "subMetas": {}
