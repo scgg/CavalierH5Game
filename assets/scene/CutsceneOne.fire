@@ -94,6 +94,9 @@
     "_components": [
       {
         "__id__": 12
+      },
+      {
+        "__id__": 13
       }
     ],
     "_prefab": null,
@@ -191,7 +194,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -419.5,
+      "x": -799.5,
       "y": -57.5
     },
     "_skewX": 0,
@@ -252,7 +255,7 @@
     "_enabled": true,
     "isAlignOnce": true,
     "_alignFlags": 12,
-    "_left": 120,
+    "_left": -260,
     "_right": 0,
     "_top": 0,
     "_bottom": 0,
@@ -425,5 +428,14 @@
     },
     "_fitWidth": false,
     "_fitHeight": true
+  },
+  {
+    "__type__": "be8c9uvypRFBJrqoVmoNIeN",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 2
+    },
+    "_enabled": true
   }
 ]

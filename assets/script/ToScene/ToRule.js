@@ -2,21 +2,16 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        rank:{
-            default:null,
-            type:cc.Node,
-            displayName:'RankBtn'
-        },
         
     },
 
     // use this for initialization
     onLoad: function () {
-        
+
     },
-    
-    ToRank: function () {
-        cc.director.loadScene('Rank');
+
+    ToRule: function(){
+        cc.director.loadScene('Rule');
     },
 
     // called every frame, uncomment this function to activate update callback
