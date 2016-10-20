@@ -2,19 +2,18 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        bianpao:{
+        gamesuccess:{
             default:null,
             type:cc.Node,
-            displayName:'bianpao',
+            displayName:'Gamesuccess',
         },
     },
 
     // use this for initialization
     onLoad: function () {
-        var bianpao = this.node.getComponent(cc.Animation);
-        // bianpao.playAdditive('bianpaoAni');
-        this.bianpao.on('touchstart',function(){
-            bianpao.playAdditive('bianpaoAni');
+        this.gamesuccess.active = false;
+        this.gamesuccess.on('touchstart',function(){
+            event.stopPropagation();
         },this);
     },
 
