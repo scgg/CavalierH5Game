@@ -50,9 +50,6 @@ declare module cc {
 	@param subst JavaScript objects with which to replace substitution strings within msg. This gives you additional control over the format of the output. 
 	*/
 	export function info(obj : any, subst : any) : void;	
-	export var dragonBonesJson : string;	
-	export var atlasJson : string;	
-	export var texture : cc.Texture2D;	
 	/** !#en
 	Creates the speed action which changes the speed of an action, making it take longer (speed > 1)
 	or less (speed < 1) time. <br/>
@@ -1043,6 +1040,9 @@ declare module cc {
 	!#zh cc.winSize 为当前的游戏窗口的大小。 */
 	export var winSize : Size;	
 	export var game : Game;	
+	export var dragonBonesJson : string;	
+	export var atlasJson : string;	
+	export var texture : cc.Texture2D;	
 	/** Checks whether subclass is child of superclass or equals to superclass 
 	*/
 	export function isChildClassOf(subclass : Function, superclass : Function) : boolean;	
@@ -1152,6 +1152,97 @@ declare module cc {
 	It is recommended to not use this function every frame instead cache the result at startup. 
 	*/
 	export function find(path : string, referenceNode? : Node) : Node;	
+	/** !#en
+	The convenience method to create a new {{#crossLink "Color/Color:method"}}cc.Color{{/crossLink}}
+	Alpha channel is optional. Default value is 255.
+	
+	!#zh
+	通过该方法来创建一个新的 {{#crossLink "Color/Color:method"}}cc.Color{{/crossLink}} 对象。
+	Alpha 通道是可选的。默认值是 255。
+	
+	@example 
+	```js
+	-----------------------
+	// 1. All channels seperately as parameters
+	var color1 = new cc.Color(255, 255, 255, 255);
+	// 2. Convert a hex string to a color
+	var color2 = new cc.Color("#000000");
+	// 3. An color object as parameter
+	var color3 = new cc.Color({r: 255, g: 255, b: 255, a: 255});
+	
+	``` 
+	*/
+	export function color(r? : number, g? : number, b? : number, a? : number) : Color;	
+	/** !#en returns true if both ccColor3B are equal. Otherwise it returns false.
+	!#zh 判断两个颜色对象的 RGB 部分是否相等，不比较透明度。
+	
+	@example 
+	```js
+	cc.log(cc.colorEqual(cc.Color.RED, new cc.Color(255, 0, 0))); // true
+	``` 
+	*/
+	export function colorEqual(color1: (r: number, g: number, b: number, a: number) => void, color2: (r: number, g: number, b: number, a: number) => void) : boolean;	
+	/** !#en
+	convert a string of color for style to Color.
+	e.g. "#ff06ff"  to : cc.color(255,6,255)。
+	!#zh 16 进制转换为 Color
+	
+	@example 
+	```js
+	cc.hexToColor("#FFFF33"); // Color {r: 255, g: 255, b: 51, a: 255};
+	``` 
+	*/
+	export function hexToColor(hex : string) : Color;	
+	/** !#en
+	convert Color to a string of color for style.
+	e.g.  cc.color(255,6,255)  to : "#ff06ff"
+	!#zh Color 转换为 16进制。
+	
+	@example 
+	```js
+	var color = new cc.Color(255, 6, 255)
+	cc.colorToHex(color); // #ff06ff;
+	``` 
+	*/
+	export function colorToHex(color: (r: number, g: number, b: number, a: number) => void) : string;	
+	/** !#en
+	Define an enum type. <br/>
+	If a enum item has a value of -1, it will be given an Integer number according to it's order in the list.<br/>
+	Otherwise it will use the value specified by user who writes the enum definition.
+	
+	!#zh
+	定义一个枚举类型。<br/>
+	用户可以把枚举值设为任意的整数，如果设为 -1，系统将会分配为上一个枚举值 + 1。
+	@param obj a JavaScript literal object containing enum names and values
+	
+	@example 
+	```js
+	var WrapMode = cc.Enum({
+	    Repeat: -1,
+	    Clamp: -1
+	});
+	
+	// Texture.WrapMode.Repeat == 0
+	// Texture.WrapMode.Clamp == 1
+	// Texture.WrapMode[0] == "Repeat"
+	// Texture.WrapMode[1] == "Clamp"
+	
+	var FlagType = cc.Enum({
+	    Flag1: 1,
+	    Flag2: 2,
+	    Flag3: 4,
+	    Flag4: 8,
+	});
+	
+	var AtlasSizeList = cc.Enum({
+	    128: 128,
+	    256: 256,
+	    512: 512,
+	    1024: 1024,
+	});
+	``` 
+	*/
+	export function Enum(obj : any) : any;	
 	/** !#en Returns opposite of Vec2.
 	!#zh 返回相反的向量。
 	
@@ -1486,97 +1577,6 @@ declare module cc {
 	*/
 	export function pNormalizeIn(v : Vec2) : void;	
 	/** !#en
-	The convenience method to create a new {{#crossLink "Color/Color:method"}}cc.Color{{/crossLink}}
-	Alpha channel is optional. Default value is 255.
-	
-	!#zh
-	通过该方法来创建一个新的 {{#crossLink "Color/Color:method"}}cc.Color{{/crossLink}} 对象。
-	Alpha 通道是可选的。默认值是 255。
-	
-	@example 
-	```js
-	-----------------------
-	// 1. All channels seperately as parameters
-	var color1 = new cc.Color(255, 255, 255, 255);
-	// 2. Convert a hex string to a color
-	var color2 = new cc.Color("#000000");
-	// 3. An color object as parameter
-	var color3 = new cc.Color({r: 255, g: 255, b: 255, a: 255});
-	
-	``` 
-	*/
-	export function color(r? : number, g? : number, b? : number, a? : number) : Color;	
-	/** !#en returns true if both ccColor3B are equal. Otherwise it returns false.
-	!#zh 判断两个颜色对象的 RGB 部分是否相等，不比较透明度。
-	
-	@example 
-	```js
-	cc.log(cc.colorEqual(cc.Color.RED, new cc.Color(255, 0, 0))); // true
-	``` 
-	*/
-	export function colorEqual(color1: (r: number, g: number, b: number, a: number) => void, color2: (r: number, g: number, b: number, a: number) => void) : boolean;	
-	/** !#en
-	convert a string of color for style to Color.
-	e.g. "#ff06ff"  to : cc.color(255,6,255)。
-	!#zh 16 进制转换为 Color
-	
-	@example 
-	```js
-	cc.hexToColor("#FFFF33"); // Color {r: 255, g: 255, b: 51, a: 255};
-	``` 
-	*/
-	export function hexToColor(hex : string) : Color;	
-	/** !#en
-	convert Color to a string of color for style.
-	e.g.  cc.color(255,6,255)  to : "#ff06ff"
-	!#zh Color 转换为 16进制。
-	
-	@example 
-	```js
-	var color = new cc.Color(255, 6, 255)
-	cc.colorToHex(color); // #ff06ff;
-	``` 
-	*/
-	export function colorToHex(color: (r: number, g: number, b: number, a: number) => void) : string;	
-	/** !#en
-	Define an enum type. <br/>
-	If a enum item has a value of -1, it will be given an Integer number according to it's order in the list.<br/>
-	Otherwise it will use the value specified by user who writes the enum definition.
-	
-	!#zh
-	定义一个枚举类型。<br/>
-	用户可以把枚举值设为任意的整数，如果设为 -1，系统将会分配为上一个枚举值 + 1。
-	@param obj a JavaScript literal object containing enum names and values
-	
-	@example 
-	```js
-	var WrapMode = cc.Enum({
-	    Repeat: -1,
-	    Clamp: -1
-	});
-	
-	// Texture.WrapMode.Repeat == 0
-	// Texture.WrapMode.Clamp == 1
-	// Texture.WrapMode[0] == "Repeat"
-	// Texture.WrapMode[1] == "Clamp"
-	
-	var FlagType = cc.Enum({
-	    Flag1: 1,
-	    Flag2: 2,
-	    Flag3: 4,
-	    Flag4: 8,
-	});
-	
-	var AtlasSizeList = cc.Enum({
-	    128: 128,
-	    256: 256,
-	    512: 512,
-	    1024: 1024,
-	});
-	``` 
-	*/
-	export function Enum(obj : any) : any;	
-	/** !#en
 	The convenience method to create a new Rect.
 	see {{#crossLink "Rect/Rect:method"}}cc.Rect{{/crossLink}}
 	!#zh
@@ -1881,236 +1881,6 @@ declare module cc {
 		WARN_FOR_WEB_PAGE = 0,
 		ERROR_FOR_WEB_PAGE = 0,	
 	}		
-		/** !#en
-		 cc.NodePool is the cache pool designed for node type.<br/>
-		 It can helps you to improve your game performance for objects which need frequent release and recreate operations<br/>
-		
-		It's recommended to create cc.NodePool instances by node type, the type corresponds to node type in game design, not the class,
-		for example, a prefab is a specific node type. <br/>
-		When you create a node pool, you can pass a Component which contains `unuse`, `reuse` functions to control the content of node.<br/>
-		
-		Some common use case is :<br/>
-		     1. Bullets in game (die very soon, massive creation and recreation, no side effect on other objects)<br/>
-		     2. Blocks in candy crash (massive creation and recreation)<br/>
-		     etc...
-		!#zh
-		cc.NodePool 是用于管理节点对象的对象缓存池。<br/>
-		它可以帮助您提高游戏性能，适用于优化对象的反复创建和销毁<br/>
-		以前 cocos2d-x 中的 cc.pool 和新的节点事件注册系统不兼容，因此请使用 cc.NodePool 来代替。
-		
-		新的 NodePool 需要实例化之后才能使用，每种不同的节点对象池需要一个不同的对象池实例，这里的种类对应于游戏中的节点设计，一个 prefab 相当于一个种类的节点。<br/>
-		在创建缓冲池时，可以传入一个包含 unuse, reuse 函数的组件类型用于节点的回收和复用逻辑。<br/>
-		
-		一些常见的用例是：<br/>
-		     1.在游戏中的子弹（死亡很快，频繁创建，对其他对象无副作用）<br/>
-		     2.糖果粉碎传奇中的木块（频繁创建）。
-		     等等.... */
-		export class NodePool {		
-		/** !#en
-		Constructor for creating a pool for a specific node template (usually a prefab). You can pass a component (type or name) argument for handling event for reusing and recycling node.
-		!#zh
-		使用构造函数来创建一个节点专用的对象池，您可以传递一个组件类型或名称，用于处理节点回收和复用时的事件逻辑。
-		@param poolHandlerComp !#en The constructor or the class name of the component to control the unuse/reuse logic. !#zh 处理节点回收和复用事件逻辑的组件类型或名称。
-		
-		@example 
-		```js
-		properties: {
-		   template: cc.Prefab
-		 },
-		 onLoad () {
-		// MyTemplateHandler is a component with 'unuse' and 'reuse' to handle events when node is reused or recycled.
-		   this.myPool = new cc.NodePool('MyTemplateHandler');
-		 }
-		``` 
-		*/
-		NodePool(poolHandlerComp : [Function|String]) : void;		
-		/** !#en The pool handler component, it could be the class name or the constructor.
-		!#zh 缓冲池处理组件，用于节点的回收和复用逻辑，这个属性可以是组件类名或组件的构造函数。 */
-		poolHandlerComp : Function|string;		
-		/** !#en The current available size in the pool
-		!#zh 获取当前缓冲池的可用对象数量 
-		*/
-		size() : void;		
-		/** !#en Destroy all cached nodes in the pool
-		!#zh 销毁对象池中缓存的所有节点 
-		*/
-		clear() : void;		
-		/** !#en Put a new Node into the pool.
-		It will automatically remove the node from its parent without cleanup.
-		It will also invoke unuse method of the poolHandlerComp if exist.
-		!#zh 向缓冲池中存入一个不再需要的节点对象。
-		这个函数会自动将目标节点从父节点上移除，但是不会进行 cleanup 操作。
-		这个函数会调用 poolHandlerComp 的 unuse 函数，如果组件和函数都存在的话。
-		
-		@example 
-		```js
-		let myNode = cc.instantiate(this.template);
-		  this.myPool.put(myNode);
-		``` 
-		*/
-		put() : void;		
-		/** !#en Get a obj from pool, if no available object in pool, null will be returned.
-		This function will invoke the reuse function of poolHandlerComp if exist.
-		!#zh 获取对象池中的对象，如果对象池没有可用对象，则返回空。
-		这个函数会调用 poolHandlerComp 的 reuse 函数，如果组件和函数都存在的话。
-		@param params !#en Params to pass to 'reuse' method in poolHandlerComp !#zh 向 poolHandlerComp 中的 'reuse' 函数传递的参数
-		
-		@example 
-		```js
-		let newNode = this.myPool.get();
-		``` 
-		*/
-		get(params : any) : any;	
-	}		
-		/** !#en
-		 Attention: In creator, it's strongly not recommended to use cc.pool to manager cc.Node.
-		 We provided {{#crossLink "NodePool"}}cc.NodePool{{/crossLink}} instead.
-		
-		 cc.pool is a singleton object serves as an object cache pool.<br/>
-		 It can helps you to improve your game performance for objects which need frequent release and recreate operations<br/>
-		!#zh
-		首先请注意，在 Creator 中我们强烈不建议使用 cc.pool 来管理 cc.Node 节点对象，请使用 {{#crossLink "NodePool"}}cc.NodePool{{/crossLink}} 代替
-		因为 cc.pool 是面向类来设计的，而 cc.Node 中使用 Component 来进行组合，它的类永远都一样，实际却千差万别。
-		
-		cc.pool 是一个单例对象，用作为对象缓存池。<br/>
-		它可以帮助您提高游戏性能，适用于优化对象的反复创建和销毁<br/> */
-		export class pool {		
-		/** !#en Put the obj in pool.
-		!#zh 加入对象到对象池中。
-		@param obj The need put in pool object.
-		
-		@example 
-		```js
-		---------------------------------
-		var sp = new _ccsg.Sprite("a.png");
-		this.addChild(sp);
-		cc.pool.putInPool(sp);
-		cc.pool.getFromPool(_ccsg.Sprite, "a.png");
-		
-		``` 
-		*/
-		putInPool(obj : any) : void;		
-		/** !#en Check if this kind of obj has already in pool.
-		!#zh 检查对象池中是否有指定对象的存在。
-		@param objClass The check object class. 
-		*/
-		hasObject(objClass : any) : boolean;		
-		/** !#en Remove the obj if you want to delete it.
-		!#zh 移除在对象池中指定的对象。 
-		*/
-		removeObject() : void;		
-		/** !#en Get the obj from pool.
-		!#zh 获取对象池中的指定对象。 
-		*/
-		getFromPool() : any;		
-		/** !#en Remove all objs in pool and reset the pool.
-		!#zh 移除对象池中的所有对象，并且重置对象池。 
-		*/
-		drainAllPools() : void;	
-	}		
-		/** !#en
-		The Armature Display of DragonBones <br/>
-		<br/>
-		(Armature Display has a reference to a DragonBonesAsset and stores the state for ArmatureDisplay instance,
-		which consists of the current pose's bone SRT, slot colors, and which slot attachments are visible. <br/>
-		Multiple Armature Display can use the same DragonBonesAsset which includes all animations, skins, and attachments.) <br/>
-		!#zh
-		DragonBones 骨骼动画 <br/>
-		<br/>
-		(Armature Display 具有对骨骼数据的引用并且存储了骨骼实例的状态，
-		它由当前的骨骼动作，slot 颜色，和可见的 slot attachments 组成。<br/>
-		多个 Armature Display 可以使用相同的骨骼数据，其中包括所有的动画，皮肤和 attachments。)<br/> */
-		export class ArmatureDisplay extends cc._RendererUnderSG {		
-		constructor();		
-		/** !#en
-		The DragonBones data contains the armatures information (bind pose bones, slots, draw order,
-		attachments, skins, etc) and animations but does not hold any state.<br/>
-		Multiple ArmatureDisplay can share the same DragonBones data.
-		!#zh
-		骨骼数据包含了骨骼信息（绑定骨骼动作，slots，渲染顺序，
-		attachments，皮肤等等）和动画但不持有任何状态。<br/>
-		多个 ArmatureDisplay 可以共用相同的骨骼数据。 */
-		dragonAsset : DragonBonesAsset;		
-		/** !#en
-		The atlas asset for the DragonBones.
-		!#zh
-		骨骼数据所需的 Atlas Texture 数据。 */
-		dragonAtlasAsset : DragonBonesAtlasAsset;		
-		/** !#en The name of current armature.
-		!#zh 当前的 Armature 名称。 */
-		armatureName : string;		
-		/** !#en The name of current playing animation.
-		!#zh 当前播放的动画名称。 */
-		animationName : string;		
-		_defaultArmatureIndex : number;		
-		/** !#en The time scale of this armature.
-		!#zh 当前骨骼中所有动画的时间缩放率。 */
-		timeScale : number;		
-		/** !#en The play times of the default animation.
-		     -1 means using the value of config file;
-		     0 means repeat for ever
-		     >0 means repeat times
-		!#zh 播放默认动画的循环次数
-		     -1 表示使用配置文件中的默认值;
-		     0 表示无限循环
-		     >0 表示循环次数 */
-		playTimes : number;		
-		/** !#en Indicates whether open debug bones.
-		!#zh 是否显示 bone 的 debug 信息。 */
-		debugBones : boolean;		
-		/** !#en
-		Play the specified animation.
-		Parameter animName specify the animation name.
-		Parameter playTimes specify the repeat times of the animation.
-		-1 means use the value of the config file.
-		0 means play the animation for ever.
-		>0 means repeat times.
-		!#zh
-		播放指定的动画.
-		animName 指定播放动画的名称。
-		playTimes 指定播放动画的次数。
-		-1 为使用配置文件中的次数。
-		0 为无限循环播放。
-		>0 为动画的重复次数。 
-		*/
-		playAnimation(animName : string, playTimes : number) : dragonBones.AnimationState;		
-		/** !#en
-		Get the all armature names in the DragonBones Data.
-		!#zh
-		获取 DragonBones 数据中所有的 armature 名称 
-		*/
-		getArmatureNames() : any[];		
-		/** !#en
-		Get the all animation names of specified armature.
-		!#zh
-		获取指定的 armature 的所有动画名称。 
-		*/
-		getAnimationNames(armatureName : string) : any[];		
-		/** !#en
-		Add event listener for the DragonBones Event.
-		!#zh
-		添加 DragonBones 事件监听器。 
-		*/
-		addEventListener(eventType : dragonBones.EventObject, listener : Function, target : any) : void;		
-		/** !#en
-		Remove the event listener for the DragonBones Event.
-		!#zh
-		移除 DragonBones 事件监听器。 
-		*/
-		removeEventListener(eventType : dragonBones.EventObject, listener : Function, target : any) : void;		
-		/** !#en
-		Build the armature for specified name.
-		!#zh
-		构建指定名称的 armature 对象 
-		*/
-		buildArmature(armatureName : string) : dragonBones.Armature;		
-		/** !#en
-		Get the current armature object of the ArmatureDisplay.
-		!#zh
-		获取 ArmatureDisplay 当前使用的 Armature 对象 
-		*/
-		armature() : any;	
-	}		
 		/** !#en Base class cc.Action for action classes.
 		!#zh Action 类是所有动作类型的基类。 */
 		export class Action {		
@@ -2238,185 +2008,6 @@ declare module cc {
 		!#zh 永远地重复一个动作，有限次数内重复一个动作请使用 Repeat 动作。 
 		*/
 		repeatForever() : ActionInterval;	
-	}		
-		/** !#en
-		cc.MotionStreak manages a Ribbon based on it's motion in absolute space.                 <br/>
-		You construct it with a fadeTime, minimum segment size, texture path, texture            <br/>
-		length and color. The fadeTime controls how long it takes each vertex in                 <br/>
-		the streak to fade out, the minimum segment size it how many pixels the                  <br/>
-		streak will move before adding a new ribbon segment, and the texture                     <br/>
-		length is the how many pixels the texture is stretched across. The texture               <br/>
-		is vertically aligned along the streak segment.
-		!#zh 运动轨迹，用于游戏对象的运动轨迹上实现拖尾渐隐效果。 */
-		export class MotionStreak extends Component {		
-		/** !#en
-		!#zh 在编辑器模式下预览拖尾效果。 */
-		preview : boolean;		
-		/** !#en The fade time to fade.
-		!#zh 拖尾的渐隐时间，以秒为单位。 */
-		fadeTime : number;		
-		/** !#en The minimum segment size.
-		!#zh 拖尾之间最小距离。 */
-		minSeg : number;		
-		/** !#en The stroke's width.
-		!#zh 拖尾的宽度。 */
-		stroke : number;		
-		/** !#en The texture of the MotionStreak.
-		!#zh 拖尾的贴图。 */
-		texture : Texture2D;		
-		/** !#en The color of the MotionStreak.
-		!#zh 拖尾的颜色 */
-		color : Color;		
-		/** !#en The fast Mode.
-		!#zh 是否启用了快速模式。当启用快速模式，新的点会被更快地添加，但精度较低。 */
-		fastMode : boolean;		
-		/** !#en Remove all living segments of the ribbon.
-		!#zh 删除当前所有的拖尾片段。
-		
-		@example 
-		```js
-		// stop particle system.
-		myParticleSystem.stopSystem();
-		``` 
-		*/
-		reset() : void;	
-	}		
-		/** !#en Class for animation data handling.
-		!#zh 动画剪辑，用于存储动画数据。 */
-		export class AnimationClip extends Asset {		
-		constructor();		
-		/** !#en Duration of this animation.
-		!#zh 动画的持续时间。 */
-		duration : number;		
-		/** !#en FrameRate of this animation.
-		!#zh 动画的帧速率。 */
-		sample : number;		
-		/** !#en Speed of this animation.
-		!#zh 动画的播放速度。 */
-		speed : number;		
-		/** !#en WrapMode of this animation.
-		!#zh 动画的循环模式。 */
-		wrapMode : WrapMode;		
-		/** !#en Curve data.
-		!#zh 曲线数据。 */
-		curveData : any;		
-		/** !#en Event data.
-		!#zh 事件数据。 */
-		events : any[];		
-		/** !#en Crate clip with a set of sprite frames
-		!#zh 使用一组序列帧图片来创建动画剪辑
-		
-		@example 
-		```js
-		var clip = cc.AnimationClip.createWithSpriteFrames(spriteFrames, 10);
-		``` 
-		*/
-		createWithSpriteFrames(spriteFrames : [SpriteFrame], sample : number) : AnimationClip;	
-	}		
-		/** !#en
-		The AnimationState gives full control over animation playback process.
-		In most cases the Animation Component is sufficient and easier to use. Use the AnimationState if you need full control.
-		!#zh
-		AnimationState 完全控制动画播放过程。<br/>
-		大多数情况下 动画组件 是足够和易于使用的。如果您需要更多的动画控制接口，请使用 AnimationState。 */
-		export class AnimationState extends AnimationNode {		
-		constructor();		
-		/**  
-		*/
-		AnimationState(clip : AnimationClip, name? : string) : AnimationState;		
-		/** !#en The clip that is being played by this animation state.
-		!#zh 此动画状态正在播放的剪辑。 */
-		clip : AnimationClip;		
-		/** !#en The name of the playing animation.
-		!#zh 动画的名字 */
-		name : string;	
-	}		
-		/** undefined */
-		export class Playable {		
-		constructor();		
-		/** !#en Is playing or paused in play mode?
-		!#zh 当前是否正在播放。 */
-		isPlaying : boolean;		
-		/** !#en Is currently paused? This can be true even if in edit mode(isPlaying == false).
-		!#zh 当前是否正在暂停 */
-		isPaused : boolean;		
-		/** !#en Play this animation.
-		!#zh 播放动画。 
-		*/
-		play() : void;		
-		/** !#en Stop this animation.
-		!#zh 停止动画播放。 
-		*/
-		stop() : void;		
-		/** !#en Pause this animation.
-		!#zh 暂停动画。 
-		*/
-		pause() : void;		
-		/** !#en Resume this animation.
-		!#zh 重新播放动画。 
-		*/
-		resume() : void;		
-		/** !#en Perform a single frame step.
-		!#zh 执行一帧动画。 
-		*/
-		step() : void;	
-	}	
-	/** !#en Specifies how time is treated when it is outside of the keyframe range of an Animation.
-	!#zh 动画使用的循环模式。 */
-	export enum WrapMode {		
-		Default = 0,
-		Normal = 0,
-		Reverse = 0,
-		Loop = 0,
-		LoopReverse = 0,
-		PingPong = 0,
-		PingPongReverse = 0,	
-	}		
-		/** !#en The abstract interface for all playing animation.
-		!#zh 所有播放动画的抽象接口。 */
-		export class AnimationNodeBase extends Playable {		
-		constructor();	
-	}		
-		/** !#en The collection and instance of playing animations.
-		!#zh 动画曲线的集合，根据当前时间计算出每条曲线的状态。 */
-		export class AnimationNode extends AnimationNodeBase {		
-		/** 
-		@param timingInput This dictionary is used as a convenience for specifying the timing properties of an Animation in bulk. 
-		*/
-		constructor(animator : Animator, curves? : AnimCurve[], timingInput? : any);		
-		/** !#en The curves list.
-		!#zh 曲线列表。 */
-		curves : AnimCurve[];		
-		/** !#en The start delay which represents the number of seconds from an animation's start time to the start of
-		the active interval.
-		!#zh 延迟多少秒播放。 */
-		delay : number;		
-		/** !#en The animation's iteration count property.
-		
-		A real number greater than or equal to zero (including positive infinity) representing the number of times
-		to repeat the animation node.
-		
-		Values less than zero and NaN values are treated as the value 1.0 for the purpose of timing model
-		calculations.
-		
-		!#zh 迭代次数，指动画播放多少次后结束, normalize time。 如 2.5（2次半） */
-		repeatCount : number;		
-		/** !#en The iteration duration of this animation in seconds. (length)
-		!#zh 单次动画的持续时间，秒。 */
-		duration : number;		
-		/** !#en The animation's playback speed. 1 is normal playback speed.
-		!#zh 播放速率。 */
-		speed : number;		
-		/** !#en
-		Wrapping mode of the playing animation.
-		Notice : dynamic change wrapMode will reset time and repeatCount property
-		!#zh
-		动画循环方式。
-		需要注意的是，动态修改 wrapMode 时，会重置 time 以及 repeatCount */
-		wrapMode : WrapMode;		
-		/** !#en The current time of this animation in seconds.
-		!#zh 动画当前的时间，秒。 */
-		time : number;	
 	}		
 		/** !#en cc.audioEngine is the singleton object, it provide simple audio APIs.
 		!#zh
@@ -2667,6 +2258,185 @@ declare module cc {
 		``` 
 		*/
 		setMaxWebAudioSize(kb : void) : void;	
+	}		
+		/** !#en Class for animation data handling.
+		!#zh 动画剪辑，用于存储动画数据。 */
+		export class AnimationClip extends Asset {		
+		constructor();		
+		/** !#en Duration of this animation.
+		!#zh 动画的持续时间。 */
+		duration : number;		
+		/** !#en FrameRate of this animation.
+		!#zh 动画的帧速率。 */
+		sample : number;		
+		/** !#en Speed of this animation.
+		!#zh 动画的播放速度。 */
+		speed : number;		
+		/** !#en WrapMode of this animation.
+		!#zh 动画的循环模式。 */
+		wrapMode : WrapMode;		
+		/** !#en Curve data.
+		!#zh 曲线数据。 */
+		curveData : any;		
+		/** !#en Event data.
+		!#zh 事件数据。 */
+		events : any[];		
+		/** !#en Crate clip with a set of sprite frames
+		!#zh 使用一组序列帧图片来创建动画剪辑
+		
+		@example 
+		```js
+		var clip = cc.AnimationClip.createWithSpriteFrames(spriteFrames, 10);
+		``` 
+		*/
+		createWithSpriteFrames(spriteFrames : [SpriteFrame], sample : number) : AnimationClip;	
+	}		
+		/** !#en
+		The AnimationState gives full control over animation playback process.
+		In most cases the Animation Component is sufficient and easier to use. Use the AnimationState if you need full control.
+		!#zh
+		AnimationState 完全控制动画播放过程。<br/>
+		大多数情况下 动画组件 是足够和易于使用的。如果您需要更多的动画控制接口，请使用 AnimationState。 */
+		export class AnimationState extends AnimationNode {		
+		constructor();		
+		/**  
+		*/
+		AnimationState(clip : AnimationClip, name? : string) : AnimationState;		
+		/** !#en The clip that is being played by this animation state.
+		!#zh 此动画状态正在播放的剪辑。 */
+		clip : AnimationClip;		
+		/** !#en The name of the playing animation.
+		!#zh 动画的名字 */
+		name : string;	
+	}		
+		/** undefined */
+		export class Playable {		
+		constructor();		
+		/** !#en Is playing or paused in play mode?
+		!#zh 当前是否正在播放。 */
+		isPlaying : boolean;		
+		/** !#en Is currently paused? This can be true even if in edit mode(isPlaying == false).
+		!#zh 当前是否正在暂停 */
+		isPaused : boolean;		
+		/** !#en Play this animation.
+		!#zh 播放动画。 
+		*/
+		play() : void;		
+		/** !#en Stop this animation.
+		!#zh 停止动画播放。 
+		*/
+		stop() : void;		
+		/** !#en Pause this animation.
+		!#zh 暂停动画。 
+		*/
+		pause() : void;		
+		/** !#en Resume this animation.
+		!#zh 重新播放动画。 
+		*/
+		resume() : void;		
+		/** !#en Perform a single frame step.
+		!#zh 执行一帧动画。 
+		*/
+		step() : void;	
+	}	
+	/** !#en Specifies how time is treated when it is outside of the keyframe range of an Animation.
+	!#zh 动画使用的循环模式。 */
+	export enum WrapMode {		
+		Default = 0,
+		Normal = 0,
+		Reverse = 0,
+		Loop = 0,
+		LoopReverse = 0,
+		PingPong = 0,
+		PingPongReverse = 0,	
+	}		
+		/** !#en The abstract interface for all playing animation.
+		!#zh 所有播放动画的抽象接口。 */
+		export class AnimationNodeBase extends Playable {		
+		constructor();	
+	}		
+		/** !#en The collection and instance of playing animations.
+		!#zh 动画曲线的集合，根据当前时间计算出每条曲线的状态。 */
+		export class AnimationNode extends AnimationNodeBase {		
+		/** 
+		@param timingInput This dictionary is used as a convenience for specifying the timing properties of an Animation in bulk. 
+		*/
+		constructor(animator : Animator, curves? : AnimCurve[], timingInput? : any);		
+		/** !#en The curves list.
+		!#zh 曲线列表。 */
+		curves : AnimCurve[];		
+		/** !#en The start delay which represents the number of seconds from an animation's start time to the start of
+		the active interval.
+		!#zh 延迟多少秒播放。 */
+		delay : number;		
+		/** !#en The animation's iteration count property.
+		
+		A real number greater than or equal to zero (including positive infinity) representing the number of times
+		to repeat the animation node.
+		
+		Values less than zero and NaN values are treated as the value 1.0 for the purpose of timing model
+		calculations.
+		
+		!#zh 迭代次数，指动画播放多少次后结束, normalize time。 如 2.5（2次半） */
+		repeatCount : number;		
+		/** !#en The iteration duration of this animation in seconds. (length)
+		!#zh 单次动画的持续时间，秒。 */
+		duration : number;		
+		/** !#en The animation's playback speed. 1 is normal playback speed.
+		!#zh 播放速率。 */
+		speed : number;		
+		/** !#en
+		Wrapping mode of the playing animation.
+		Notice : dynamic change wrapMode will reset time and repeatCount property
+		!#zh
+		动画循环方式。
+		需要注意的是，动态修改 wrapMode 时，会重置 time 以及 repeatCount */
+		wrapMode : WrapMode;		
+		/** !#en The current time of this animation in seconds.
+		!#zh 动画当前的时间，秒。 */
+		time : number;	
+	}		
+		/** !#en
+		cc.MotionStreak manages a Ribbon based on it's motion in absolute space.                 <br/>
+		You construct it with a fadeTime, minimum segment size, texture path, texture            <br/>
+		length and color. The fadeTime controls how long it takes each vertex in                 <br/>
+		the streak to fade out, the minimum segment size it how many pixels the                  <br/>
+		streak will move before adding a new ribbon segment, and the texture                     <br/>
+		length is the how many pixels the texture is stretched across. The texture               <br/>
+		is vertically aligned along the streak segment.
+		!#zh 运动轨迹，用于游戏对象的运动轨迹上实现拖尾渐隐效果。 */
+		export class MotionStreak extends Component {		
+		/** !#en
+		!#zh 在编辑器模式下预览拖尾效果。 */
+		preview : boolean;		
+		/** !#en The fade time to fade.
+		!#zh 拖尾的渐隐时间，以秒为单位。 */
+		fadeTime : number;		
+		/** !#en The minimum segment size.
+		!#zh 拖尾之间最小距离。 */
+		minSeg : number;		
+		/** !#en The stroke's width.
+		!#zh 拖尾的宽度。 */
+		stroke : number;		
+		/** !#en The texture of the MotionStreak.
+		!#zh 拖尾的贴图。 */
+		texture : Texture2D;		
+		/** !#en The color of the MotionStreak.
+		!#zh 拖尾的颜色 */
+		color : Color;		
+		/** !#en The fast Mode.
+		!#zh 是否启用了快速模式。当启用快速模式，新的点会被更快地添加，但精度较低。 */
+		fastMode : boolean;		
+		/** !#en Remove all living segments of the ribbon.
+		!#zh 删除当前所有的拖尾片段。
+		
+		@example 
+		```js
+		// stop particle system.
+		myParticleSystem.stopSystem();
+		``` 
+		*/
+		reset() : void;	
 	}		
 		/** !#en
 		cc.ActionManager is a class that can manage actions.<br/>
@@ -3163,17 +2933,6 @@ declare module cc {
 		isPersistRootNode(node : Node) : boolean;	
 	}		
 		/** !#en
-		cc.Scene is a subclass of cc.Node that is used only as an abstract concept.<br/>
-		cc.Scene and cc.Node are almost identical with the difference that users can not modify cc.Scene manually.
-		!#zh
-		cc.Scene 是 cc.Node 的子类，仅作为一个抽象的概念。<br/>
-		cc.Scene 和 cc.Node 有点不同，用户不应直接修改 cc.Scene。 */
-		export class Scene extends _BaseNode {		
-		/** !#en Indicates whether all (directly or indirectly) static referenced assets of this scene are releasable by default after scene unloading.
-		!#zh 指示该场景中直接或间接静态引用到的所有资源是否默认在场景切换后自动释放。 */
-		autoReleaseAssets : boolean;	
-	}		
-		/** !#en
 		Class of all entities in Cocos Creator scenes.<br/>
 		Node also inherits from {{#crossLink "EventTarget"}}Event Target{{/crossLink}}, it permits Node to dispatch events.
 		For events supported by Node, please refer to {{#crossLink "Node.EventType"}}{{/crossLink}}
@@ -3418,6 +3177,17 @@ declare module cc {
 		``` 
 		*/
 		getNumberOfRunningActions() : number;	
+	}		
+		/** !#en
+		cc.Scene is a subclass of cc.Node that is used only as an abstract concept.<br/>
+		cc.Scene and cc.Node are almost identical with the difference that users can not modify cc.Scene manually.
+		!#zh
+		cc.Scene 是 cc.Node 的子类，仅作为一个抽象的概念。<br/>
+		cc.Scene 和 cc.Node 有点不同，用户不应直接修改 cc.Scene。 */
+		export class Scene extends _BaseNode {		
+		/** !#en Indicates whether all (directly or indirectly) static referenced assets of this scene are releasable by default after scene unloading.
+		!#zh 指示该场景中直接或间接静态引用到的所有资源是否默认在场景切换后自动释放。 */
+		autoReleaseAssets : boolean;	
 	}		
 		/** !#en
 		Scheduler is responsible of triggering the scheduled callbacks.<br/>
@@ -4208,88 +3978,6 @@ declare module cc {
 		*/
 		setProperties(properties : any[]) : void;	
 	}		
-		/** Class for tiled map asset handling. */
-		export class TiledMapAsset extends Asset {		
-		constructor();	
-	}		
-		/** !#en Renders the TMX object group.
-		!#zh 渲染 tmx object group。 */
-		export class TiledObjectGroup extends _SGComponent {		
-		/** !#en Offset position of child objects.
-		!#zh 获取子对象的偏移位置。
-		
-		@example 
-		```js
-		var offset = tMXObjectGroup.getPositionOffset();
-		``` 
-		*/
-		getPositionOffset() : Vec2;		
-		/** !#en Offset position of child objects.
-		!#zh 设置子对象的偏移位置。
-		
-		@example 
-		```js
-		tMXObjectGroup.setPositionOffset(cc.v2(5, 5));
-		``` 
-		*/
-		setPositionOffset(offset : Vec2) : void;		
-		/** !#en List of properties stored in a dictionary.
-		!#zh 以映射的形式获取属性列表。
-		
-		@example 
-		```js
-		var offset = tMXObjectGroup.getProperties();
-		``` 
-		*/
-		getProperties() : any;		
-		/** !#en Set the properties of the object group.
-		!#zh 设置属性列表。
-		
-		@example 
-		```js
-		tMXObjectGroup.setProperties(obj);
-		``` 
-		*/
-		setProperties(Var : any) : void;		
-		/** !#en Gets the Group name.
-		!#zh 获取组名称。
-		
-		@example 
-		```js
-		var groupName = tMXObjectGroup.getGroupName;
-		``` 
-		*/
-		getGroupName() : string;		
-		/** !#en Set the Group name.
-		!#zh 设置组名称。
-		
-		@example 
-		```js
-		tMXObjectGroup.setGroupName("New Group");
-		``` 
-		*/
-		setGroupName(groupName : string) : void;		
-		/** !#en
-		Return the object for the specific object name. <br />
-		It will return the 1st object found on the array for the given name.
-		!#zh 获取指定的对象。
-		
-		@example 
-		```js
-		var object = tMXObjectGroup.getObject("Group");
-		``` 
-		*/
-		getObject(objectName : string) : any;		
-		/** !#en Gets the objects.
-		!#zh 获取对象数组。
-		
-		@example 
-		```js
-		var objects = tMXObjectGroup.getObjects();
-		``` 
-		*/
-		getObjects() : any[];	
-	}		
 		/** !#en Renders a TMX Tile Map in the scene.
 		!#zh 在场景中渲染一个 tmx 格式的 Tile Map。 */
 		export class TiledMap extends Component {		
@@ -4438,6 +4126,318 @@ declare module cc {
 		``` 
 		*/
 		getPropertiesForGID(GID : number) : any;	
+	}		
+		/** Class for tiled map asset handling. */
+		export class TiledMapAsset extends Asset {		
+		constructor();	
+	}		
+		/** !#en Renders the TMX object group.
+		!#zh 渲染 tmx object group。 */
+		export class TiledObjectGroup extends _SGComponent {		
+		/** !#en Offset position of child objects.
+		!#zh 获取子对象的偏移位置。
+		
+		@example 
+		```js
+		var offset = tMXObjectGroup.getPositionOffset();
+		``` 
+		*/
+		getPositionOffset() : Vec2;		
+		/** !#en Offset position of child objects.
+		!#zh 设置子对象的偏移位置。
+		
+		@example 
+		```js
+		tMXObjectGroup.setPositionOffset(cc.v2(5, 5));
+		``` 
+		*/
+		setPositionOffset(offset : Vec2) : void;		
+		/** !#en List of properties stored in a dictionary.
+		!#zh 以映射的形式获取属性列表。
+		
+		@example 
+		```js
+		var offset = tMXObjectGroup.getProperties();
+		``` 
+		*/
+		getProperties() : any;		
+		/** !#en Set the properties of the object group.
+		!#zh 设置属性列表。
+		
+		@example 
+		```js
+		tMXObjectGroup.setProperties(obj);
+		``` 
+		*/
+		setProperties(Var : any) : void;		
+		/** !#en Gets the Group name.
+		!#zh 获取组名称。
+		
+		@example 
+		```js
+		var groupName = tMXObjectGroup.getGroupName;
+		``` 
+		*/
+		getGroupName() : string;		
+		/** !#en Set the Group name.
+		!#zh 设置组名称。
+		
+		@example 
+		```js
+		tMXObjectGroup.setGroupName("New Group");
+		``` 
+		*/
+		setGroupName(groupName : string) : void;		
+		/** !#en
+		Return the object for the specific object name. <br />
+		It will return the 1st object found on the array for the given name.
+		!#zh 获取指定的对象。
+		
+		@example 
+		```js
+		var object = tMXObjectGroup.getObject("Group");
+		``` 
+		*/
+		getObject(objectName : string) : any;		
+		/** !#en Gets the objects.
+		!#zh 获取对象数组。
+		
+		@example 
+		```js
+		var objects = tMXObjectGroup.getObjects();
+		``` 
+		*/
+		getObjects() : any[];	
+	}		
+		/** !#en
+		The Armature Display of DragonBones <br/>
+		<br/>
+		(Armature Display has a reference to a DragonBonesAsset and stores the state for ArmatureDisplay instance,
+		which consists of the current pose's bone SRT, slot colors, and which slot attachments are visible. <br/>
+		Multiple Armature Display can use the same DragonBonesAsset which includes all animations, skins, and attachments.) <br/>
+		!#zh
+		DragonBones 骨骼动画 <br/>
+		<br/>
+		(Armature Display 具有对骨骼数据的引用并且存储了骨骼实例的状态，
+		它由当前的骨骼动作，slot 颜色，和可见的 slot attachments 组成。<br/>
+		多个 Armature Display 可以使用相同的骨骼数据，其中包括所有的动画，皮肤和 attachments。)<br/> */
+		export class ArmatureDisplay extends cc._RendererUnderSG {		
+		constructor();		
+		/** !#en
+		The DragonBones data contains the armatures information (bind pose bones, slots, draw order,
+		attachments, skins, etc) and animations but does not hold any state.<br/>
+		Multiple ArmatureDisplay can share the same DragonBones data.
+		!#zh
+		骨骼数据包含了骨骼信息（绑定骨骼动作，slots，渲染顺序，
+		attachments，皮肤等等）和动画但不持有任何状态。<br/>
+		多个 ArmatureDisplay 可以共用相同的骨骼数据。 */
+		dragonAsset : DragonBonesAsset;		
+		/** !#en
+		The atlas asset for the DragonBones.
+		!#zh
+		骨骼数据所需的 Atlas Texture 数据。 */
+		dragonAtlasAsset : DragonBonesAtlasAsset;		
+		/** !#en The name of current armature.
+		!#zh 当前的 Armature 名称。 */
+		armatureName : string;		
+		/** !#en The name of current playing animation.
+		!#zh 当前播放的动画名称。 */
+		animationName : string;		
+		_defaultArmatureIndex : number;		
+		/** !#en The time scale of this armature.
+		!#zh 当前骨骼中所有动画的时间缩放率。 */
+		timeScale : number;		
+		/** !#en The play times of the default animation.
+		     -1 means using the value of config file;
+		     0 means repeat for ever
+		     >0 means repeat times
+		!#zh 播放默认动画的循环次数
+		     -1 表示使用配置文件中的默认值;
+		     0 表示无限循环
+		     >0 表示循环次数 */
+		playTimes : number;		
+		/** !#en Indicates whether open debug bones.
+		!#zh 是否显示 bone 的 debug 信息。 */
+		debugBones : boolean;		
+		/** !#en
+		Play the specified animation.
+		Parameter animName specify the animation name.
+		Parameter playTimes specify the repeat times of the animation.
+		-1 means use the value of the config file.
+		0 means play the animation for ever.
+		>0 means repeat times.
+		!#zh
+		播放指定的动画.
+		animName 指定播放动画的名称。
+		playTimes 指定播放动画的次数。
+		-1 为使用配置文件中的次数。
+		0 为无限循环播放。
+		>0 为动画的重复次数。 
+		*/
+		playAnimation(animName : string, playTimes : number) : dragonBones.AnimationState;		
+		/** !#en
+		Get the all armature names in the DragonBones Data.
+		!#zh
+		获取 DragonBones 数据中所有的 armature 名称 
+		*/
+		getArmatureNames() : any[];		
+		/** !#en
+		Get the all animation names of specified armature.
+		!#zh
+		获取指定的 armature 的所有动画名称。 
+		*/
+		getAnimationNames(armatureName : string) : any[];		
+		/** !#en
+		Add event listener for the DragonBones Event.
+		!#zh
+		添加 DragonBones 事件监听器。 
+		*/
+		addEventListener(eventType : dragonBones.EventObject, listener : Function, target : any) : void;		
+		/** !#en
+		Remove the event listener for the DragonBones Event.
+		!#zh
+		移除 DragonBones 事件监听器。 
+		*/
+		removeEventListener(eventType : dragonBones.EventObject, listener : Function, target : any) : void;		
+		/** !#en
+		Build the armature for specified name.
+		!#zh
+		构建指定名称的 armature 对象 
+		*/
+		buildArmature(armatureName : string) : dragonBones.Armature;		
+		/** !#en
+		Get the current armature object of the ArmatureDisplay.
+		!#zh
+		获取 ArmatureDisplay 当前使用的 Armature 对象 
+		*/
+		armature() : any;	
+	}		
+		/** !#en
+		 cc.NodePool is the cache pool designed for node type.<br/>
+		 It can helps you to improve your game performance for objects which need frequent release and recreate operations<br/>
+		
+		It's recommended to create cc.NodePool instances by node type, the type corresponds to node type in game design, not the class,
+		for example, a prefab is a specific node type. <br/>
+		When you create a node pool, you can pass a Component which contains `unuse`, `reuse` functions to control the content of node.<br/>
+		
+		Some common use case is :<br/>
+		     1. Bullets in game (die very soon, massive creation and recreation, no side effect on other objects)<br/>
+		     2. Blocks in candy crash (massive creation and recreation)<br/>
+		     etc...
+		!#zh
+		cc.NodePool 是用于管理节点对象的对象缓存池。<br/>
+		它可以帮助您提高游戏性能，适用于优化对象的反复创建和销毁<br/>
+		以前 cocos2d-x 中的 cc.pool 和新的节点事件注册系统不兼容，因此请使用 cc.NodePool 来代替。
+		
+		新的 NodePool 需要实例化之后才能使用，每种不同的节点对象池需要一个不同的对象池实例，这里的种类对应于游戏中的节点设计，一个 prefab 相当于一个种类的节点。<br/>
+		在创建缓冲池时，可以传入一个包含 unuse, reuse 函数的组件类型用于节点的回收和复用逻辑。<br/>
+		
+		一些常见的用例是：<br/>
+		     1.在游戏中的子弹（死亡很快，频繁创建，对其他对象无副作用）<br/>
+		     2.糖果粉碎传奇中的木块（频繁创建）。
+		     等等.... */
+		export class NodePool {		
+		/** !#en
+		Constructor for creating a pool for a specific node template (usually a prefab). You can pass a component (type or name) argument for handling event for reusing and recycling node.
+		!#zh
+		使用构造函数来创建一个节点专用的对象池，您可以传递一个组件类型或名称，用于处理节点回收和复用时的事件逻辑。
+		@param poolHandlerComp !#en The constructor or the class name of the component to control the unuse/reuse logic. !#zh 处理节点回收和复用事件逻辑的组件类型或名称。
+		
+		@example 
+		```js
+		properties: {
+		   template: cc.Prefab
+		 },
+		 onLoad () {
+		// MyTemplateHandler is a component with 'unuse' and 'reuse' to handle events when node is reused or recycled.
+		   this.myPool = new cc.NodePool('MyTemplateHandler');
+		 }
+		``` 
+		*/
+		NodePool(poolHandlerComp : [Function|String]) : void;		
+		/** !#en The pool handler component, it could be the class name or the constructor.
+		!#zh 缓冲池处理组件，用于节点的回收和复用逻辑，这个属性可以是组件类名或组件的构造函数。 */
+		poolHandlerComp : Function|string;		
+		/** !#en The current available size in the pool
+		!#zh 获取当前缓冲池的可用对象数量 
+		*/
+		size() : void;		
+		/** !#en Destroy all cached nodes in the pool
+		!#zh 销毁对象池中缓存的所有节点 
+		*/
+		clear() : void;		
+		/** !#en Put a new Node into the pool.
+		It will automatically remove the node from its parent without cleanup.
+		It will also invoke unuse method of the poolHandlerComp if exist.
+		!#zh 向缓冲池中存入一个不再需要的节点对象。
+		这个函数会自动将目标节点从父节点上移除，但是不会进行 cleanup 操作。
+		这个函数会调用 poolHandlerComp 的 unuse 函数，如果组件和函数都存在的话。
+		
+		@example 
+		```js
+		let myNode = cc.instantiate(this.template);
+		  this.myPool.put(myNode);
+		``` 
+		*/
+		put() : void;		
+		/** !#en Get a obj from pool, if no available object in pool, null will be returned.
+		This function will invoke the reuse function of poolHandlerComp if exist.
+		!#zh 获取对象池中的对象，如果对象池没有可用对象，则返回空。
+		这个函数会调用 poolHandlerComp 的 reuse 函数，如果组件和函数都存在的话。
+		@param params !#en Params to pass to 'reuse' method in poolHandlerComp !#zh 向 poolHandlerComp 中的 'reuse' 函数传递的参数
+		
+		@example 
+		```js
+		let newNode = this.myPool.get();
+		``` 
+		*/
+		get(params : any) : any;	
+	}		
+		/** !#en
+		 Attention: In creator, it's strongly not recommended to use cc.pool to manager cc.Node.
+		 We provided {{#crossLink "NodePool"}}cc.NodePool{{/crossLink}} instead.
+		
+		 cc.pool is a singleton object serves as an object cache pool.<br/>
+		 It can helps you to improve your game performance for objects which need frequent release and recreate operations<br/>
+		!#zh
+		首先请注意，在 Creator 中我们强烈不建议使用 cc.pool 来管理 cc.Node 节点对象，请使用 {{#crossLink "NodePool"}}cc.NodePool{{/crossLink}} 代替
+		因为 cc.pool 是面向类来设计的，而 cc.Node 中使用 Component 来进行组合，它的类永远都一样，实际却千差万别。
+		
+		cc.pool 是一个单例对象，用作为对象缓存池。<br/>
+		它可以帮助您提高游戏性能，适用于优化对象的反复创建和销毁<br/> */
+		export class pool {		
+		/** !#en Put the obj in pool.
+		!#zh 加入对象到对象池中。
+		@param obj The need put in pool object.
+		
+		@example 
+		```js
+		---------------------------------
+		var sp = new _ccsg.Sprite("a.png");
+		this.addChild(sp);
+		cc.pool.putInPool(sp);
+		cc.pool.getFromPool(_ccsg.Sprite, "a.png");
+		
+		``` 
+		*/
+		putInPool(obj : any) : void;		
+		/** !#en Check if this kind of obj has already in pool.
+		!#zh 检查对象池中是否有指定对象的存在。
+		@param objClass The check object class. 
+		*/
+		hasObject(objClass : any) : boolean;		
+		/** !#en Remove the obj if you want to delete it.
+		!#zh 移除在对象池中指定的对象。 
+		*/
+		removeObject() : void;		
+		/** !#en Get the obj from pool.
+		!#zh 获取对象池中的指定对象。 
+		*/
+		getFromPool() : any;		
+		/** !#en Remove all objs in pool and reset the pool.
+		!#zh 移除对象池中的所有对象，并且重置对象池。 
+		*/
+		drainAllPools() : void;	
 	}		
 		/** !#en Box Collider.
 		!#zh 包围盒碰撞组件 */
@@ -4892,7 +4892,19 @@ declare module cc {
 		/** !#en Rewind playing music.
 		!#zh 从头开始播放。 
 		*/
-		rewind() : void;	
+		rewind() : void;		
+		/** !#en Get current time
+		!#zh 获取当前的播放时间 
+		*/
+		getCurrentTime() : void;		
+		/** !#en Set current time
+		!#zh 设置当前的播放时间 
+		*/
+		setCurrentTime(time : number) : void;		
+		/** !#en Get audio duration
+		!#zh 获取当前音频的长度 
+		*/
+		getDuration() : void;	
 	}		
 		/** !#en
 		Button has 4 Transition types
@@ -5270,8 +5282,19 @@ declare module cc {
 		!#zh 输入框最大允许输入的字符个数。 */
 		placeholderFontColor : Color;		
 		/** !#en The maximize input length of EditBox.
-		!#zh 输入框最大允许输入的字符个数。 */
+		- If pass a value less than 0, it won't limit the input number of characters.
+		- If pass 0, it doesn't allow input any characters.
+		!#zh 输入框最大允许输入的字符个数。
+		- 如果值为小于 0 的值，则不会限制输入字符个数。
+		- 如果值为 0，则不允许用户进行任何输入。 */
 		maxLength : number;		
+		/** !#en The input is always visible and be on top of the game view.
+		!zh 输入框总是可见，并且永远在游戏视图的上面
+		Note: only available on Web at the moment. */
+		stayOnTop : boolean;		
+		/** !#en Set the tabIndex of the DOM input element, only useful on Web.
+		!#zh 修改 DOM 输入元素的 tabIndex，这个属性只有在 Web 上面修改有意义。 */
+		tabIndex : number;		
 		/** !#en The event handler to be called when EditBox began to edit text.
 		!#zh 开始编辑文本输入框触发的事件回调。 */
 		editingDidBegin : Component.EventHandler;		
@@ -5283,7 +5306,17 @@ declare module cc {
 		editingDidEnded : Component.EventHandler;		
 		/** !#en The event handler to be called when return key is pressed. Windows is not supported.
 		!#zh 当用户按下回车按键时的事件回调，目前不支持 windows 平台 */
-		editingReturn : Component.EventHandler;	
+		editingReturn : Component.EventHandler;		
+		/** !#en Let the EditBox get focus, only valid when stayOnTop is true.
+		!#zh 让当前 EditBox 获得焦点，只有在 stayOnTop 为 true 的时候设置有效
+		Note: only available on Web at the moment. 
+		*/
+		setFocus() : void;		
+		/** !#en Determine whether EditBox is getting focus or not.
+		!#zh 判断 EditBox 是否获得了焦点
+		Note: only available on Web at the moment. 
+		*/
+		isFocused() : void;	
 	}		
 		/** !#en The Label Component.
 		!#zh 文字标签组件 */
@@ -5382,6 +5415,10 @@ declare module cc {
 		release the next page will automatically scroll, less than the restore
 		!#zh 滚动临界值，默认单位百分比，当拖拽超出该数值时，松开会自动滚动下一页，小于时则还原。 */
 		scrollThreshold : number;		
+		/** !#en Change the AutoScroll stop epsilon value of PageView, change this value could adjust the PageView's
+		     event triggerring timing.
+		!#zh 设置 PageView 页面自动滚动动画结束的阈值，修改此值可以调整 PageView 事件的发送时机。 */
+		autoScrollStopEpsilon : number;		
 		/** !#en The Page View Indicator
 		!#zh 页面视图指示器组件 */
 		indicator : PageViewIndicator;		
@@ -6475,6 +6512,10 @@ declare module cc {
 		*/
 		isEnabled() : boolean;	
 	}		
+		/** !#en The System event, it currently supports the key events and accelerometer events
+		!#zh 系统事件，它目前支持按键事件和重力感应事件 */
+		export class SystemEvent extends EventTarget {	
+	}		
 		/** !#en The touch event class
 		!#zh 封装了触摸相关的信息。 */
 		export class Touch {		
@@ -7141,7 +7182,8 @@ declare module cc {
 		*/
 		update(dt : number) : void;	
 	}	
-	/** Key map for keyboard event */
+	/** !#en Key map for keyboard event
+	!#zh 键盘事件的按键值 */
 	export enum KEY {		
 		none = 0,
 		back = 0,
@@ -10878,6 +10920,20 @@ declare module cc {
 			@param bubbles A boolean indicating whether the event bubbles up through the tree or not 
 			*/
 			constructor(keyCode : number, isPressed : boolean, bubbles : boolean);		
+		}	
+	}	
+	
+	/****************************************************
+	* SystemEvent
+	*****************************************************/
+	
+	export module SystemEvent {		
+		/** !#en The event type supported by SystemEvent
+		!#zh SystemEvent 支持的事件类型 */
+		export enum EventType {			
+			KEY_DOWN = 0,
+			KEY_UP = 0,
+			DEVICEMOTION = 0,		
 		}	
 	}	
 	
