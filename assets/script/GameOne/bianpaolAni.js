@@ -14,7 +14,7 @@ cc.Class({
         var bianpao = this.node.getComponent(cc.Animation);
         // bianpao.playAdditive('bianpaoAni');
         this.bianpao.on('touchstart',function(){
-            bianpao.playAdditive('bianpaoAni');
+            bianpao.playAdditive('bianpaolAni');
         },this);
     },
 

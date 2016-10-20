@@ -1,0 +1,17 @@
+{
+  "excludeScenes": [],
+  "includeAnySDK": false,
+  "includeSdk": [
+    "anysdk"
+  ],
+  "orientation": {
+    "landscapeLeft": true,
+    "landscapeRight": true,
+    "portrait": false,
+    "upsideDown": false
+  },
+  "packageName": "org.cocos2d.CavalierH5Game",
+  "startScene": "aabd4665-6dfa-4ac9-b665-e11646a4728f",
+  "title": "CavalierH5Game",
+  "webOrientation": "auto"
+}

@@ -126,7 +126,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 1334,
-      "height": 600
+      "height": 604
     },
     "_children": [
       {
@@ -195,7 +195,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": -799.5,
-      "y": -57.5
+      "y": -59.5
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -396,7 +396,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "44781a87-8898-40e6-b1f3-b5bb8a7ef2e6"
+      "__uuid__": "b6b01bcf-0714-4e17-8d2e-28d79ada8bcf"
     },
     "_type": 0,
     "_sizeMode": 1,

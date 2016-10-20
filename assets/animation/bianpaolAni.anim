@@ -1,6 +1,6 @@
 {
   "__type__": "cc.AnimationClip",
-  "_name": "bianpaoAni",
+  "_name": "bianpaolAni",
   "_objFlags": 0,
   "_rawFiles": null,
   "_duration": 0.7,
@@ -14,31 +14,31 @@
           {
             "frame": 0,
             "value": {
-              "__uuid__": "a3ae9187-7397-41df-8e01-655be9e0173a"
+              "__uuid__": "b58c251d-ce2f-4b4c-a0f9-f27e76a71a79"
             }
           },
           {
             "frame": 0.16666666666666666,
             "value": {
-              "__uuid__": "5172864c-0349-4573-8922-5e6d26f62321"
+              "__uuid__": "d94ffb30-822d-45af-88ca-44417e689740"
             }
           },
           {
             "frame": 0.3333333333333333,
             "value": {
-              "__uuid__": "62e5115e-b6fc-4f80-9088-90cb283f77cb"
+              "__uuid__": "8d766e8b-6f51-41b3-97c0-b46e0006c0de"
             }
           },
           {
             "frame": 0.5,
             "value": {
-              "__uuid__": "89e3de26-e0c4-4611-b9b0-38c90388950c"
+              "__uuid__": "cf00b06d-d1b8-4b7a-9dfd-2896d355a3ee"
             }
           },
           {
             "frame": 0.6666666666666666,
             "value": {
-              "__uuid__": "a3ae9187-7397-41df-8e01-655be9e0173a"
+              "__uuid__": "b58c251d-ce2f-4b4c-a0f9-f27e76a71a79"
             }
           }
         ]
