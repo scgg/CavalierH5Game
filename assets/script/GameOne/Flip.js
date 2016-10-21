@@ -43,8 +43,8 @@ cc.Class({
         // }else{
         //     // cc.log("no flip");
         // }
-        if(this.speed.y*100 > 50){
-            this.sprite.rotationX = 180;
+        if(this.speed.y*100 > 70){
+            // this.sprite.rotationX = 180;
 
             this.gamesuccess.active = true;
             cc.log("Node Rotation Y: " + this.speed.y*100);

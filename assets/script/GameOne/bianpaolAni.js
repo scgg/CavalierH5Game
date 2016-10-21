@@ -2,24 +2,35 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        bianpao:{
-            default:null,
-            type:cc.Node,
-            displayName:'bianpao',
+        bianpao: {
+            default: null,
+            type: cc.Node,
+            displayName: 'bianpao',
+        },
+        GameFailure: {
+            default: null,
+            type: cc.Node,
+            displayName: 'GameFailure',
         },
     },
+
+
 
     // use this for initialization
     onLoad: function () {
         var bianpao = this.node.getComponent(cc.Animation);
-        // bianpao.playAdditive('bianpaoAni');
-        this.bianpao.on('touchstart',function(){
+        this.bianpao.on('touchstart', function () {
             bianpao.playAdditive('bianpaolAni');
-        },this);
+
+            this.schedule(function(){
+                cc.log('lala');
+                this.GameFailure.active = true;
+            },1,0,1);
+        }, this);
+
+        this.GameFailure.on('touchstart', function () {
+            event.stopPropagation();
+        }, this);
+
     },
-
-    // called every frame, uncomment this function to activate update callback
-    // update: function (dt) {
-
-    // },
 });

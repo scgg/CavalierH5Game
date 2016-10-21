@@ -3401,13 +3401,16 @@
     "_enabled": true,
     "bianpao": {
       "__id__": 95
+    },
+    "GameFailure": {
+      "__id__": 79
     }
   },
   {
     "__type__": "cc.Node",
     "_name": "Answer",
     "_objFlags": 0,
-    "_opacity": 0,
+    "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
       "r": 255,
@@ -3440,8 +3443,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
+      "x": 1.1368683772161603e-13,
+      "y": 5.684341886080802e-14
     },
     "_skewX": 0,
     "_skewY": 0,

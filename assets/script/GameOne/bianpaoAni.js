@@ -7,39 +7,33 @@ cc.Class({
             type: cc.Node,
             displayName: 'bianpao',
         },
-        GameFailure:{
-            default:null,
-            type:cc.Node,
-            displayName:'GameFailure',
+        GameFailure: {
+            default: null,
+            type: cc.Node,
+            displayName: 'GameFailure',
         },
     },
 
+
+
     // use this for initialization
     onLoad: function () {
+
+        
         this.GameFailure.active = false;
 
         var bianpao = this.node.getComponent(cc.Animation);
-        // bianpao.playAdditive('bianpaoAni');
         this.bianpao.on('touchstart', function () {
             bianpao.playAdditive('bianpaoAni');
 
-
-            // setTimeout(Gf,2);
-            this.GameFailure.active = true;
+            this.schedule(function(){
+                this.GameFailure.active = true;
+            },1,0,1);
         }, this);
 
-        this.GameFailure.on('touchstart',function(){
+        this.GameFailure.on('touchstart', function () {
             event.stopPropagation();
-        },this);
+        }, this);
 
     },
-
-    // Gf:function(){
-    //     this.GameFailure.active = true;
-    // },
-
-    // called every frame, uncomment this function to activate update callback
-    // update: function (dt) {
-
-    // },
 });
