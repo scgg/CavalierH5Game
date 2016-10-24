@@ -2139,15 +2139,15 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
-    "_actualFontSize": 32,
+    "_actualFontSize": 21,
     "_fontSize": 32,
     "_lineHeight": 16,
-    "_enableWrapText": true,
+    "_enableWrapText": false,
     "_N$file": {
       "__uuid__": "9363a7f2-f3f0-40fb-a394-642adb52e6f7"
     },
     "_isSystemFontUsed": false,
-    "_N$string": "",
+    "_N$string": "220-150",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$overflow": 2
