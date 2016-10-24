@@ -10,11 +10,17 @@ cc.Class({
             type:cc.Node,
             displayName:'Gamesuccess',
         },
+        showGameSuccess:{
+            default:null,
+            type:cc.Node,
+            displayName:'showGameSuccess',
+        },
     },
 
     // use this for initialization
     onLoad: function() {
-        this.GSensor()
+        this.GSensor();
+        this.showGameSuccess.active = false;
     },
     GSensor: function() {
         cc.inputManager.setAccelerometerEnabled(true);
@@ -32,21 +38,19 @@ cc.Class({
 
     // called every frame
     update: function(dt) {
-
-        // this.sprite.x += this.speed.x * 10
-        // this.sprite.y += this.speed.y * 10
-        // cc.log("Node Rotation Y: " + this.speed.y*100);
-        //
-        // if(this.speed.y*100 > 50 || this.speed.y*100 < -90){
-        //     this.sprite.rotationX = 180;
-        //     cc.log("Node Rotation Y: " + this.speed.y*100);
-        // }else{
-        //     // cc.log("no flip");
-        // }
         if(this.speed.y*100 > 70){
-            // this.sprite.rotationX = 180;
+            this.showGameSuccess.active = true;
+            if(cc.sys.localStorage.game < 1){
+                var gold = cc.sys.localStorage.gold;
+                var newGold = parseInt(gold);
+                cc.sys.localStorage.gold = newGold + 50;
+                cc.sys.localStorage.game = 1;
+            }
 
-            this.gamesuccess.active = true;
+            this.schedule(function(){
+                this.gamesuccess.active = true;
+            },1,0,4);
+
             cc.log("Node Rotation Y: " + this.speed.y*100);
         }else{
             // cc.log("no flip");

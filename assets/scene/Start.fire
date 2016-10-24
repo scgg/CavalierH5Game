@@ -335,7 +335,8 @@
       "__id__": 5
     },
     "component": "ToRank",
-    "handler": "ToRank"
+    "handler": "ToRank",
+    "customEventData": ""
   },
   {
     "__type__": "cc.Widget",
@@ -521,7 +522,8 @@
       "__id__": 11
     },
     "component": "ToStage",
-    "handler": "ToStage"
+    "handler": "ToStage",
+    "customEventData": ""
   },
   {
     "__type__": "cc.Widget",
@@ -706,7 +708,8 @@
       "__id__": 17
     },
     "component": "ToRule",
-    "handler": "ToRule"
+    "handler": "ToRule",
+    "customEventData": ""
   },
   {
     "__type__": "cc.Widget",
