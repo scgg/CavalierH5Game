@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "e52b32b9-97ff-4656-a0c1-8392b74ef3f8",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "redCar": {
+      "ver": "1.0.3",
+      "uuid": "8ba8118e-f1f1-4411-b1dd-1f1fb7820fa2",
+      "rawTextureUuid": "e52b32b9-97ff-4656-a0c1-8392b74ef3f8",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -3,
+      "offsetY": 1,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 464,
+      "height": 204,
+      "rawWidth": 470,
+      "rawHeight": 206,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

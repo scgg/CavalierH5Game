@@ -283,6 +283,9 @@
     "node": {
       "__id__": 2
     },
-    "_enabled": true
+    "_enabled": true,
+    "bgAudio": {
+      "__uuid__": "4e506bf3-dfad-41f2-820d-a19e7c3ae8e4"
+    }
   }
 ]
