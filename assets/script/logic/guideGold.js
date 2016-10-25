@@ -47,9 +47,12 @@ cc.Class({
                     this.showHdie.active = true;
                     this.prompt.active = false;
                     var gold = cc.sys.localStorage.gold;
-                    // cc.sys.localStorage.gold = 'gold - 150';
-                    // setTimeout(this.e,2000);
-                    cc.sys.localStorage.gold = gold - 150;
+                    var minusgold = gold + '-150';
+                    cc.sys.localStorage.gold = minusgold;
+                    var e = function(){
+                        cc.sys.localStorage.gold = gold - 150;
+                    };
+                    setTimeout(e,1500);
                     cc.sys.localStorage.guide = 0;
                 }
             }else if(cc.sys.localStorage.guide == 0){
