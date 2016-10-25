@@ -16,6 +16,13 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
+        this.node.getChildByName('blackCar').getComponent(cc.Sprite).active = false;
+        this.node.getChildByName('brownCar').getComponent(cc.Sprite).active = false;
+        this.node.getChildByName('whiteCar').getComponent(cc.Sprite).active = false;
+        this.node.getChildByName('blueCar').getComponent(cc.Sprite).active = false;
+        this.node.getChildByName('redCar').getComponent(cc.Sprite).active = false;
+        var carColor;
+        carColor = parseInt(cc.random0To1()*5+1,10);
 
     },
 
