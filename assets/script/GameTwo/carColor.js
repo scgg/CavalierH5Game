@@ -23,7 +23,17 @@ cc.Class({
         this.node.getChildByName('redCar').getComponent(cc.Sprite).active = false;
         var carColor;
         carColor = parseInt(cc.random0To1()*5+1,10);
-
+        if(carColor == 1){
+            this.node.getChildByName('blackCar').getComponent(cc.Sprite).active = true;
+        }else if(carColor == 2){
+            this.node.getChildByName('brownCar').getComponent(cc.Sprite).active = true;
+        }else if(carColor == 3){
+            this.node.getChildByName('whiteCar').getComponent(cc.Sprite).active = true;
+        }else if(carColor == 4){
+            this.node.getChildByName('blueCar').getComponent(cc.Sprite).active = true;
+        }else if(carColor == 5){
+            this.node.getChildByName('redCar').getComponent(cc.Sprite).active = true;
+        }
     },
 
     // called every frame, uncomment this function to activate update callback
