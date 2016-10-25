@@ -2,92 +2,38 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        car:{
-            default:null,
-            type:cc.Node,
-        },
-        blackCar:{
-            default:null,
-            type:cc.Node,
-        },
-        brownCar:{
-            default:null,
-            type:cc.Node,
-        },
-        whiteCar:{
-            default:null,
-            type:cc.Node,
-        },
-        blueCar:{
-            default:null,
-            type:cc.Node,
-        },
-        redCar:{
-            default:null,
-            type:cc.Node,
-        },
+        // foo: {
+        //    default: null,      // The default value will be used only when the component attaching
+        //                           to a node for the first time
+        //    url: cc.Texture2D,  // optional, default is typeof default
+        //    serializable: true, // optional, default is true
+        //    visible: true,      // optional, default is true
+        //    displayName: 'Foo', // optional
+        //    readonly: false,    // optional, default is false
+        // },
+        // ...
     },
 
     // use this for initialization
     onLoad: function () {
-        this.blackCar.active = false;
-        this.brownCar.active = false;
-        this.whiteCar.active = false;
-        this.blueCar.active = false;
-        this.redCar.active = false;
+        this.node.getChildByName('blackCar').getComponent(cc.Sprite).active = false;
+        this.node.getChildByName('brownCar').getComponent(cc.Sprite).active = false;
+        this.node.getChildByName('whiteCar').getComponent(cc.Sprite).active = false;
+        this.node.getChildByName('blueCar').getComponent(cc.Sprite).active = false;
+        this.node.getChildByName('redCar').getComponent(cc.Sprite).active = false;
         var carColor;
         carColor = parseInt(cc.random0To1()*5+1,10);
-        cc.sys.localStorage.carColor = carColor;
         if(carColor == 1){
-            this.blackCar.active = true;
+            this.node.getChildByName('blackCar').getComponent(cc.Sprite).active = true;
         }else if(carColor == 2){
-            this.brownCar.active = true;
+            this.node.getChildByName('brownCar').getComponent(cc.Sprite).active = true;
         }else if(carColor == 3){
-            this.whiteCar.active = true;
+            this.node.getChildByName('whiteCar').getComponent(cc.Sprite).active = true;
         }else if(carColor == 4){
-            this.blueCar.active = true;
+            this.node.getChildByName('blueCar').getComponent(cc.Sprite).active = true;
         }else if(carColor == 5){
-            this.redCar.active = true;
+            this.node.getChildByName('redCar').getComponent(cc.Sprite).active = true;
         }
-
-        this.car.on('touchstart',function(){
-            if(cc.sys.localStorage.carColor == 1){
-                this.brownCar.active = true;
-                this.blackCar.active = false;
-                this.whiteCar.active = false;
-                this.blueCar.active = false;
-                this.redCar.active = false;
-                cc.sys.localStorage.carColor = parseInt(cc.sys.localStorage.carColor) + 1;
-            }else if(cc.sys.localStorage.carColor == 2){
-                this.whiteCar.active = true;
-                this.blackCar.active = false;
-                this.brownCar.active = false;
-                this.blueCar.active = false;
-                this.redCar.active = false;
-                cc.sys.localStorage.carColor = parseInt(cc.sys.localStorage.carColor) + 1;
-            }else if(cc.sys.localStorage.carColor == 3){
-                this.blueCar.active = true;
-                this.blackCar.active = false;
-                this.brownCar.active = false;
-                this.whiteCar.active = false;
-                this.redCar.active = false;
-                cc.sys.localStorage.carColor = parseInt(cc.sys.localStorage.carColor) + 1;
-            }else if(cc.sys.localStorage.carColor == 4){
-                this.redCar.active = true;
-                this.blackCar.active = false;
-                this.brownCar.active = false;
-                this.whiteCar.active = false;
-                this.blueCar.active = false;
-                cc.sys.localStorage.carColor = parseInt(cc.sys.localStorage.carColor) + 1;
-            }else if(cc.sys.localStorage.carColor == 5){
-                this.blackCar.active = true;
-                this.brownCar.active = false;
-                this.whiteCar.active = false;
-                this.blueCar.active = false;
-                this.redCar.active = false;
-                cc.sys.localStorage.carColor = parseInt(cc.sys.localStorage.carColor) - 4;
-            }
-        },this);
     },
 
     // called every frame, uncomment this function to activate update callback
