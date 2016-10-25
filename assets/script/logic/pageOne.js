@@ -34,8 +34,6 @@ cc.Class({
             this.node.getChildByName('StageOne').getComponent(cc.Button).interactable = true;
             this.node.getChildByName('StageTwo').getComponent(cc.Button).interactable = true;
             this.node.getChildByName('StageThree').getComponent(cc.Button).interactable = true;
-        }else{
-            cc.log('wrong');
         }
     },
 

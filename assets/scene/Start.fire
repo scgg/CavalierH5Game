@@ -132,7 +132,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 1334,
-      "height": 600
+      "height": 604
     },
     "_children": [],
     "_rotationX": 0,
@@ -169,7 +169,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "99d98516-d7d0-4999-b69d-b6293b7ff8dd"
+      "__uuid__": "3cc6ebd9-55c4-4679-b6b7-c31ee2beb32a"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -219,8 +219,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -417,
-      "y": -160
+      "x": 467,
+      "y": 160
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -347,11 +347,11 @@
     },
     "_enabled": true,
     "isAlignOnce": true,
-    "_alignFlags": 12,
+    "_alignFlags": 33,
     "_left": 150,
-    "_right": 0,
-    "_top": 0,
-    "_bottom": 100,
+    "_right": 100,
+    "_top": 100,
+    "_bottom": 260,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,
     "_isAbsLeft": true,
@@ -360,8 +360,8 @@
     "_isAbsBottom": true,
     "_isAbsHorizontalCenter": true,
     "_isAbsVerticalCenter": true,
-    "_originalWidth": 0,
-    "_originalHeight": 0
+    "_originalWidth": 200,
+    "_originalHeight": 80
   },
   {
     "__type__": "1d42cQLXgBCUZXnd4aMLFR1",
@@ -408,8 +408,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 0,
-      "y": -160
+      "x": 367,
+      "y": 0
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -534,10 +534,10 @@
     },
     "_enabled": true,
     "isAlignOnce": true,
-    "_alignFlags": 20,
+    "_alignFlags": 34,
     "_left": 0,
-    "_right": 0,
-    "_top": 0,
+    "_right": 200,
+    "_top": 300,
     "_bottom": 100,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,
@@ -592,7 +592,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 417,
+      "x": 267,
       "y": -160
     },
     "_skewX": 0,
@@ -722,7 +722,7 @@
     "isAlignOnce": true,
     "_alignFlags": 36,
     "_left": 0,
-    "_right": 150,
+    "_right": 300,
     "_top": 0,
     "_bottom": 100,
     "_verticalCenter": 0,

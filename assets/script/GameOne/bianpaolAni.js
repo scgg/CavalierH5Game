@@ -23,7 +23,6 @@ cc.Class({
             bianpao.playAdditive('bianpaolAni');
 
             this.schedule(function(){
-                cc.log('lala');
                 this.GameFailure.active = true;
             },1,0,1);
         }, this);
