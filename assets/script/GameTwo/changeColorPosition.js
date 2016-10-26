@@ -58,6 +58,8 @@ cc.Class({
                 this.white.setPosition(localStorage.whitePx,localStorage.whitePy);
                 this.black.setPosition(localStorage.blackPx,localStorage.blackPy);
             }
+            cc.sys.localStorage.colorClickTimes = parseInt(cc.sys.localStorage.colorClickTimes) + 1;
+            this.fiveClickTimes();
         },this);
 
         this.white.on('touchstart',function(){
@@ -68,6 +70,8 @@ cc.Class({
                 this.white.setPosition(localStorage.whitePx,localStorage.whitePy);
                 this.black.setPosition(localStorage.blackPx,localStorage.blackPy);
             }
+            cc.sys.localStorage.colorClickTimes = parseInt(cc.sys.localStorage.colorClickTimes) + 1;
+            this.fiveClickTimes();
         },this);
 
         this.blue.on('touchstart',function(){
@@ -78,6 +82,8 @@ cc.Class({
                 this.red.setPosition(localStorage.redPx,localStorage.redPy);
                 this.blue.setPosition(localStorage.bluePx,localStorage.bluePy);
             }
+            cc.sys.localStorage.colorClickTimes = parseInt(cc.sys.localStorage.colorClickTimes) + 1;
+            this.fiveClickTimes();
         },this);
 
         this.red.on('touchstart',function(){
@@ -88,6 +94,8 @@ cc.Class({
                 this.red.setPosition(localStorage.redPx,localStorage.redPy);
                 this.blue.setPosition(localStorage.bluePx,localStorage.bluePy);
             }
+            cc.sys.localStorage.colorClickTimes = parseInt(cc.sys.localStorage.colorClickTimes) + 1;
+            this.fiveClickTimes();
         },this);
 
         this.brown.on('touchstart',function(){
@@ -98,11 +106,23 @@ cc.Class({
                 this.confirmBtn.setPosition(localStorage.confirmBtnPx,localStorage.confirmBtnPy);
                 this.brown.setPosition(localStorage.brownPx,localStorage.brownPy);
             }
+            cc.sys.localStorage.colorClickTimes = parseInt(cc.sys.localStorage.colorClickTimes) + 1;
+            this.fiveClickTimes();
         },this);
+
+        
+    },
+
+    fiveClickTimes:function(){
+        if(cc.sys.localStorage.colorClickTimes > 5 ){
+            cc.log('end');
+            
+        }
     },
 
     // use this for initialization
     onLoad: function () {
+        cc.sys.localStorage.colorClickTimes = 0;
         this.getColorPosition();
         this.changeColorPosition();
     },
