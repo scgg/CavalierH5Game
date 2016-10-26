@@ -52,7 +52,7 @@ cc.Class({
                     var e = function(){
                         cc.sys.localStorage.gold = gold - 50;
                     };
-                    setTimeout(e,1500);
+                    setTimeout(e,500);
                     cc.sys.localStorage.prompt = 0;
                 }
             }else if(cc.sys.localStorage.prompt == 0){

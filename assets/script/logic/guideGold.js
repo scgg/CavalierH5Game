@@ -28,21 +28,22 @@ cc.Class({
     onLoad: function () {
         var guide = cc.sys.localStorage.guide;
         if(guide == undefined){
+            guide = 1;
             cc.sys.localStorage.guide = 1;
-            cc.log(guide);
         }
         this.showHdie.active = false;
         this.showAddGold.active = false;
        
         this.guideBtn.on('touchstart',function(){
             if(cc.sys.localStorage.guide == 1){
-                if(cc.sys.localStorage.gold < 50){
+                if(parseInt(cc.sys.localStorage.gold) < 150){
                     if(this.showAddGold.active){
                         this.showAddGold.active = false;
                     }else{
                         this.showAddGold.active = true;
                         this.prompt.active = false;
                     }
+                    cc.log('111')
                 }else{
                     this.showHdie.active = true;
                     this.prompt.active = false;
@@ -52,8 +53,9 @@ cc.Class({
                     var e = function(){
                         cc.sys.localStorage.gold = gold - 150;
                     };
-                    setTimeout(e,1500);
+                    setTimeout(e,500);
                     cc.sys.localStorage.guide = 0;
+                    cc.log('112')
                 }
             }else if(cc.sys.localStorage.guide == 0){
                 if(this.showHdie.active){

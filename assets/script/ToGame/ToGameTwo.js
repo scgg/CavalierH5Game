@@ -7,14 +7,10 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
-
+        setTimeout(function() {
+            cc.director.loadScene('GameTwo');
+        }, 5000);
     },
-
-    ToCutsceneOne:function(){
-        cc.director.loadScene('CutsceneOne');
-        cc.sys.localStorage.removeItem('prompt');
-        cc.sys.localStorage.removeItem('guide');
-    }
 
     // called every frame, uncomment this function to activate update callback
     // update: function (dt) {
