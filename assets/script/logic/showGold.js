@@ -15,5 +15,6 @@ cc.Class({
     update: function (dt) {
         var gold = cc.sys.localStorage.gold;
         this.goldLabel.string = gold;
+        this.goldLabel.fontSize = 32;
     },
 });

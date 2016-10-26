@@ -10,8 +10,8 @@ cc.Class({
 
     },
 
-    ToCutsceneOne:function(){
-        cc.director.loadScene('CutsceneOne');
+    ToCutsceneTwo: function(){
+        cc.director.loadScene('CutsceneTwo');
         cc.sys.localStorage.removeItem('prompt');
         cc.sys.localStorage.removeItem('guide');
     }
