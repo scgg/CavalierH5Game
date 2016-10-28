@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "635142b0-bb39-4029-9a59-5525b5fd99e1",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "bgtalk": {
+      "ver": "1.0.3",
+      "uuid": "a2ce009b-357e-43fb-a998-373e9def44f4",
+      "rawTextureUuid": "635142b0-bb39-4029-9a59-5525b5fd99e1",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0.5,
+      "offsetY": 0,
+      "trimX": 1,
+      "trimY": 2,
+      "width": 437,
+      "height": 114,
+      "rawWidth": 438,
+      "rawHeight": 118,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
