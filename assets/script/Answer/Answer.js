@@ -222,7 +222,7 @@ cc.Class({
         this.gold.string = localStorage.gold;
     },
     endAnswer:function(){
-        var answerToScene = localStorage.addGoldScene;
+        var answerToScene = localStorage.GameToAnswer;
         if(localStorage.AnswerTimes > 10){
             cc.director.loadScene(answerToScene);
             localStorage.removeItem('AnswerTimes');
