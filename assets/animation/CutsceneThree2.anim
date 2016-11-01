@@ -1,0 +1,25 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "CutsceneThree2",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 0.5,
+  "sample": 30,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "props": {
+      "opacity": [
+        {
+          "frame": 0.16666666666666666,
+          "value": 0
+        },
+        {
+          "frame": 0.5,
+          "value": 255
+        }
+      ]
+    }
+  },
+  "events": []
+}

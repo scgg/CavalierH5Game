@@ -1,0 +1,32 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "CutsceneThree1",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 0.3333333333333333,
+  "sample": 30,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "props": {
+      "position": [
+        {
+          "frame": 0,
+          "value": [
+            -976.5,
+            0
+          ],
+          "curve": "sineIn"
+        },
+        {
+          "frame": 0.3333333333333333,
+          "value": [
+            -358,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  "events": []
+}
