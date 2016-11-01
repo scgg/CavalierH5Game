@@ -25,6 +25,12 @@ cc.Class({
             var car = localStorage.newCarColor;
             if(nail == car){
                 this.success.active = true;
+                if(cc.sys.localStorage.game < 2){
+                    var gold = cc.sys.localStorage.gold;
+                    var newGold = parseInt(gold);
+                    cc.sys.localStorage.gold = newGold + 50;
+                    cc.sys.localStorage.game = 2;
+                } 
             }else{
                 this.failure.active = true;
             }
