@@ -1461,6 +1461,12 @@
     },
     "failure": {
       "__id__": 51
+    },
+    "shengliEffect": {
+      "__uuid__": "50a9bab5-c555-4de7-b3db-fc311faa394e"
+    },
+    "shibaiEffect": {
+      "__uuid__": "12826935-808c-4238-8432-464f41cece20"
     }
   },
   {

@@ -359,8 +359,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 26,
-      "height": 6
+      "width": 50,
+      "height": 50
     },
     "_children": [],
     "_rotationX": 0,
@@ -450,6 +450,9 @@
     "_enabled": true,
     "one": {
       "__id__": 7
+    },
+    "moveto": {
+      "__id__": 11
     }
   },
   {
@@ -475,8 +478,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 26,
-      "height": 6
+      "width": 50,
+      "height": 50
     },
     "_children": [],
     "_rotationX": 0,
@@ -586,7 +589,7 @@
     "node": {
       "__id__": 6
     },
-    "_enabled": true,
+    "_enabled": false,
     "isAlignOnce": true,
     "_alignFlags": 34,
     "_left": 0,
@@ -641,6 +644,12 @@
     },
     "GameFailure": {
       "__id__": 32
+    },
+    "shengliEffect": {
+      "__uuid__": "50a9bab5-c555-4de7-b3db-fc311faa394e"
+    },
+    "shibaiEffect": {
+      "__uuid__": "12826935-808c-4238-8432-464f41cece20"
     }
   },
   {

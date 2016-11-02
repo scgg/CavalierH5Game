@@ -133,13 +133,21 @@ cc.Class({
             default:null,
             type:cc.Label,
         },
+        daduiEffect:{
+            default:null,
+            url:cc.AudioClip,
+        },
+        dacuoEffect:{
+            default:null,
+            url:cc.AudioClip,
+        },
     },
 
 
     showAnswer:function(){
 
         if(localStorage.nextAnswer == undefined){
-            var an = parseInt(cc.random0To1()*5,10);
+            var an = parseInt(cc.random0To1()*60,10);
             this.subject.string = answer[an][0];
             this.A.string = answer[an][1];
             this.B.string = answer[an][2];
@@ -163,11 +171,13 @@ cc.Class({
             cc.sys.localStorage.AnswerTimes  = parseInt(localStorage.AnswerTimes) + 1;
             cc.sys.localStorage.nextAnswer = 1;
             this.dadui.active = true;
+            cc.audioEngine.playEffect(this.daduiEffect,false);
             localStorage.gold = parseInt(localStorage.gold) + 10;
         }else{
             cc.sys.localStorage.AnswerTimes  = parseInt(localStorage.AnswerTimes) + 1;
             cc.sys.localStorage.nextAnswer = 1;
             this.dacuo.active = true;
+            cc.audioEngine.playEffect(this.dacuoEffect,false);
         }
     },
     changeSprite:function(){

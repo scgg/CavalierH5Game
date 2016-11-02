@@ -14,10 +14,31 @@ cc.Class({
             default:null,
             type:cc.Node,
         },
+        shengliEffect:{
+            default:null,
+            url:cc.AudioClip,
+        },
+        shibaiEffect:{
+            default:null,
+            url:cc.AudioClip,
+        },
     },
+    // ajax: function () {
+    //     var openid = $('#openid').val();
+    //     $.post("api.php", {
+    //         act: 'edit',
+    //         openid: openid,
+    //         gold: localStorage.gold,
+    //     }, function (data) {
+    //         if(data.code == 200){
+    //             cc.log('success!');
+    //         }
+    //     }, 'json')
+    // },
 
     // use this for initialization
     onLoad: function () {
+        // this.ajax();
         this.success.active = false;
         this.failure.active = false;
         this.Btn.on('touchstart',function(){
@@ -25,6 +46,7 @@ cc.Class({
             var car = localStorage.newCarColor;
             if(nail == car){
                 this.success.active = true;
+                cc.audioEngine.playEffect(this.shengliEffect,false);
                 if(cc.sys.localStorage.game < 2){
                     var gold = cc.sys.localStorage.gold;
                     var newGold = parseInt(gold);
@@ -33,6 +55,7 @@ cc.Class({
                 } 
             }else{
                 this.failure.active = true;
+                cc.audioEngine.playEffect(this.shibaiEffect,false);
             }
         },this);
     },

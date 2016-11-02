@@ -3,8 +3,8 @@
   "_name": "zhuanpan1",
   "_objFlags": 0,
   "_rawFiles": null,
-  "_duration": 0.3333333333333333,
-  "sample": 30,
+  "_duration": 2,
+  "sample": 5,
   "speed": 1,
   "wrapMode": 1,
   "curveData": {
@@ -21,7 +21,7 @@
           ]
         },
         {
-          "frame": 0.3333333333333333,
+          "frame": 2,
           "value": 1080
         }
       ]
