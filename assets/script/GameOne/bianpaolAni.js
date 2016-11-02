@@ -12,6 +12,10 @@ cc.Class({
             type: cc.Node,
             displayName: 'GameFailure',
         },
+        shibaiEffect:{
+            default:null,
+            url:cc.AudioClip,
+        },
     },
 
 
@@ -23,6 +27,7 @@ cc.Class({
             bianpao.playAdditive('bianpaolAni');
 
             this.schedule(function(){
+                cc.audioEngine.playEffect(this.shibaiEffect,false);
                 this.GameFailure.active = true;
             },1,0,1);
         }, this);

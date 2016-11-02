@@ -7,7 +7,7 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
-        setTimeout(this.d,5000);
+        setTimeout(this.d,3500);
     },
 
     d:function(){

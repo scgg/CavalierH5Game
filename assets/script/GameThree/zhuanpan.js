@@ -18,6 +18,14 @@ cc.Class({
             default: null,
             type: cc.Node,
         },
+        shengliEffect:{
+            default:null,
+            url:cc.AudioClip,
+        },
+        shibaiEffect:{
+            default:null,
+            url:cc.AudioClip,
+        },
     },
 
     // use this for initialization
@@ -33,6 +41,7 @@ cc.Class({
             if (localStorage.OneMoveOne == 1) {
                 this.schedule(function () {
                     this.GameSuccess.active = true;
+                    cc.audioEngine.playEffect(this.shengliEffect,false);
                     cc.sys.localStorage.OneMoveOne = 0;
                     if (cc.sys.localStorage.game < 3) {
                         var gold = cc.sys.localStorage.gold;
@@ -40,11 +49,12 @@ cc.Class({
                         cc.sys.localStorage.gold = newGold + 50;
                         cc.sys.localStorage.game = 3;
                     }
-                }, 1, 0, 1);
+                }, 3, 0, 3);
             } else {
                 this.schedule(function () {
                     this.GameFailure.active = true;
-                }, 1, 0, 1);
+                    cc.audioEngine.playEffect(this.shibaiEffect,false);
+                }, 3, 0, 3);
             }
         }, this);
 

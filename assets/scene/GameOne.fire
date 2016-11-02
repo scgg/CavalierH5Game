@@ -544,6 +544,9 @@
     },
     "GameFailure": {
       "__id__": 15
+    },
+    "shibaiEffect": {
+      "__uuid__": "12826935-808c-4238-8432-464f41cece20"
     }
   },
   {
@@ -1166,6 +1169,9 @@
     },
     "GameFailure": {
       "__id__": 15
+    },
+    "shibaiEffect": {
+      "__uuid__": "12826935-808c-4238-8432-464f41cece20"
     }
   },
   {
@@ -1335,6 +1341,9 @@
     },
     "showGameSuccess": {
       "__id__": 55
+    },
+    "effect": {
+      "__uuid__": "50a9bab5-c555-4de7-b3db-fc311faa394e"
     }
   },
   {

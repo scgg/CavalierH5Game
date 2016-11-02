@@ -6,6 +6,10 @@ cc.Class({
             default:null,
             type:cc.Node,
         },
+        moveto:{
+            default:null,
+            type:cc.Node,
+        },
     },
 
     // use this for initialization
@@ -23,10 +27,14 @@ cc.Class({
     },
     
     onCollisionEnter:function(other){
-        this.node.color = cc.Color.RED;
+        // this.node.color = cc.Color.RED;
     },
     onCollisionStay:function(other){
+        var x = this.moveto.getPositionX();
+        var y = this.moveto.getPositionY();
         cc.sys.localStorage.OneMoveOne = 1;
+        this.one.x = x;
+        this.one.y = y;
     },
     onCollisionExit:function(other){
         cc.sys.localStorage.OneMoveOne = 0;
