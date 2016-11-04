@@ -26,6 +26,11 @@ cc.Class({
             default:null,
             type:cc.Node,
         },
+        blackTick:cc.Node,
+        brownTick:cc.Node,
+        whiteTick:cc.Node,
+        blueTick:cc.Node,
+        redTick:cc.Node,
     },
 
     getColorPosition:function(){
@@ -54,9 +59,20 @@ cc.Class({
             if(this.black.x == localStorage.blackPx){
                 this.black.setPosition(localStorage.whitePx,localStorage.whitePy);
                 this.white.setPosition(localStorage.blackPx,localStorage.blackPy);
+                this.whiteTick.active = true;
+                this.blackTick.active = false;
+                this.brownTick.active = false;
+                this.blueTick.active = false;
+                this.redTick.active = false;
             }else{
                 this.white.setPosition(localStorage.whitePx,localStorage.whitePy);
                 this.black.setPosition(localStorage.blackPx,localStorage.blackPy);
+                this.whiteTick.active = true;
+                this.blackTick.active = false;
+                this.brownTick.active = false;
+                this.blueTick.active = false;
+                this.redTick.active = false;
+
             }
             cc.sys.localStorage.colorClickTimes = parseInt(cc.sys.localStorage.colorClickTimes) + 1;
             this.fiveClickTimes();
@@ -66,9 +82,19 @@ cc.Class({
             if(this.white.x == localStorage.whitePx){
                 this.black.setPosition(localStorage.whitePx,localStorage.whitePy);
                 this.white.setPosition(localStorage.blackPx,localStorage.blackPy);
+                this.whiteTick.active = false;
+                this.blackTick.active = true;
+                this.brownTick.active = false;
+                this.blueTick.active = false;
+                this.redTick.active = false;
             }else{
                 this.white.setPosition(localStorage.whitePx,localStorage.whitePy);
                 this.black.setPosition(localStorage.blackPx,localStorage.blackPy);
+                this.whiteTick.active = false;
+                this.blackTick.active = true;
+                this.brownTick.active = false;
+                this.blueTick.active = false;
+                this.redTick.active = false;
             }
             cc.sys.localStorage.colorClickTimes = parseInt(cc.sys.localStorage.colorClickTimes) + 1;
             this.fiveClickTimes();
@@ -78,9 +104,19 @@ cc.Class({
             if(this.blue.x == localStorage.bluePx){
                 this.blue.setPosition(localStorage.redPx,localStorage.redPy);
                 this.red.setPosition(localStorage.bluePx,localStorage.bluePy);
+                this.whiteTick.active = false;
+                this.blackTick.active = false;
+                this.brownTick.active = false;
+                this.blueTick.active = false;
+                this.redTick.active = true;
             }else{
                 this.red.setPosition(localStorage.redPx,localStorage.redPy);
                 this.blue.setPosition(localStorage.bluePx,localStorage.bluePy);
+                this.whiteTick.active = false;
+                this.blackTick.active = false;
+                this.brownTick.active = false;
+                this.blueTick.active = false;
+                this.redTick.active = true;
             }
             cc.sys.localStorage.colorClickTimes = parseInt(cc.sys.localStorage.colorClickTimes) + 1;
             this.fiveClickTimes();
@@ -90,9 +126,19 @@ cc.Class({
             if(this.red.x == localStorage.redPx){
                 this.blue.setPosition(localStorage.redPx,localStorage.redPy);
                 this.red.setPosition(localStorage.bluePx,localStorage.bluePy);
+                this.whiteTick.active = false;
+                this.blackTick.active = false;
+                this.brownTick.active = false;
+                this.blueTick.active = true;
+                this.redTick.active = false;
             }else{
                 this.red.setPosition(localStorage.redPx,localStorage.redPy);
                 this.blue.setPosition(localStorage.bluePx,localStorage.bluePy);
+                this.whiteTick.active = false;
+                this.blackTick.active = false;
+                this.brownTick.active = false;
+                this.blueTick.active = true;
+                this.redTick.active = false;
             }
             cc.sys.localStorage.colorClickTimes = parseInt(cc.sys.localStorage.colorClickTimes) + 1;
             this.fiveClickTimes();
@@ -102,9 +148,19 @@ cc.Class({
             if(this.brown.x == localStorage.brownPx){
                 this.brown.setPosition(localStorage.confirmBtnPx,localStorage.confirmBtnPy);
                 this.confirmBtn.setPosition(localStorage.brownPx,localStorage.brownPy);
+                this.whiteTick.active = false;
+                this.blackTick.active = false;
+                this.brownTick.active = true;
+                this.blueTick.active = false;
+                this.redTick.active = false;
             }else{
                 this.confirmBtn.setPosition(localStorage.confirmBtnPx,localStorage.confirmBtnPy);
                 this.brown.setPosition(localStorage.brownPx,localStorage.brownPy);
+                this.whiteTick.active = false;
+                this.blackTick.active = false;
+                this.brownTick.active = false;
+                this.blueTick.active = false;
+                this.redTick.active = false;
             }
             cc.sys.localStorage.colorClickTimes = parseInt(cc.sys.localStorage.colorClickTimes) + 1;
             this.fiveClickTimes();
@@ -122,6 +178,11 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
+        this.blackTick.active = false;
+        this.brownTick.active = false;
+        this.whiteTick.active = false;
+        this.blueTick.active = false;
+        this.redTick.active = false;
         cc.sys.localStorage.colorClickTimes = 0;
         this.getColorPosition();
         this.changeColorPosition();

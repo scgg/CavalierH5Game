@@ -68,8 +68,8 @@ cc.Class({
                 this.gamesuccess.active = true;
                 // var self = this;
                 cc.audioEngine.playEffect(this.effect, false);
-                this.ajax();
-            }, 1, 0, 4);
+                // this.ajax();
+            }, 1, 0, 2);
 
             cc.log("Node Rotation Y: " + this.speed.y * 100);
         } else {

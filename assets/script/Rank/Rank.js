@@ -2,6 +2,7 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
+        
         nc0: cc.Label,
         nc1: cc.Label,
         nc2: cc.Label,
@@ -59,25 +60,12 @@ cc.Class({
             if (xhr.readyState == 4) {
                 if (xhr.status == 200) {
                     var json = eval('(' + xhr.responseText + ')');
-                    cc.log(json);
                     var i;
                     for(i in json.data){
                         self['nc'+i].string = json.data[i].nic;
                         self['gb'+i].string = json.data[i].gold;
                         self['sj'+i].string = json.data[i].time;
                     }
-                    // for(var i = 0;i<10;i++){
-                    //     self['nc'+i].string = json.data[i].nic;
-                    //     self['gb'+i].string = json.data[i].gold;
-                    //     self['sj'+i].string = json.data[i].time;
-                    // };
-                    // for(var j = 0;j<10;j++){
-                    //     self['gb'+j].string = json.data[j].gold;
-                    // }
-                    // for(var k = 0;k<10;k++){
-                    //     self['sj'+k].string = json.data[k].time;
-                    // }  
-                    // cc.log(json);
                 }
             }
         }
