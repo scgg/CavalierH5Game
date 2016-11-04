@@ -56,124 +56,114 @@ cc.Class({
 
     changeColorPosition:function(){
         this.black.on('touchstart',function(){
-            if(this.black.x == localStorage.blackPx){
-                this.black.setPosition(localStorage.whitePx,localStorage.whitePy);
-                this.white.setPosition(localStorage.blackPx,localStorage.blackPy);
-                this.whiteTick.active = true;
-                this.blackTick.active = false;
-                this.brownTick.active = false;
-                this.blueTick.active = false;
-                this.redTick.active = false;
-            }else{
-                this.white.setPosition(localStorage.whitePx,localStorage.whitePy);
-                this.black.setPosition(localStorage.blackPx,localStorage.blackPy);
-                this.whiteTick.active = true;
-                this.blackTick.active = false;
-                this.brownTick.active = false;
-                this.blueTick.active = false;
-                this.redTick.active = false;
-
+            if(localStorage.newCarColor == 'black'){
+                if(this.black.x == localStorage.blackPx){
+                    this.black.setPosition(localStorage.whitePx,localStorage.whitePy);
+                    this.white.setPosition(localStorage.blackPx,localStorage.blackPy);
+                    this.whiteTick.active = true;
+                    this.blackTick.active = false;
+                    this.brownTick.active = false;
+                    this.blueTick.active = false;
+                    this.redTick.active = false;
+                }else{
+                    this.white.setPosition(localStorage.whitePx,localStorage.whitePy);
+                    this.black.setPosition(localStorage.blackPx,localStorage.blackPy);
+                    this.whiteTick.active = true;
+                    this.blackTick.active = false;
+                    this.brownTick.active = false;
+                    this.blueTick.active = false;
+                    this.redTick.active = false;
+                }
             }
-            cc.sys.localStorage.colorClickTimes = parseInt(cc.sys.localStorage.colorClickTimes) + 1;
-            this.fiveClickTimes();
         },this);
 
         this.white.on('touchstart',function(){
-            if(this.white.x == localStorage.whitePx){
-                this.black.setPosition(localStorage.whitePx,localStorage.whitePy);
-                this.white.setPosition(localStorage.blackPx,localStorage.blackPy);
-                this.whiteTick.active = false;
-                this.blackTick.active = true;
-                this.brownTick.active = false;
-                this.blueTick.active = false;
-                this.redTick.active = false;
-            }else{
-                this.white.setPosition(localStorage.whitePx,localStorage.whitePy);
-                this.black.setPosition(localStorage.blackPx,localStorage.blackPy);
-                this.whiteTick.active = false;
-                this.blackTick.active = true;
-                this.brownTick.active = false;
-                this.blueTick.active = false;
-                this.redTick.active = false;
+            if(localStorage.newCarColor == 'white'){
+                if(this.white.x == localStorage.whitePx){
+                    this.black.setPosition(localStorage.whitePx,localStorage.whitePy);
+                    this.white.setPosition(localStorage.blackPx,localStorage.blackPy);
+                    this.whiteTick.active = false;
+                    this.blackTick.active = true;
+                    this.brownTick.active = false;
+                    this.blueTick.active = false;
+                    this.redTick.active = false;
+                }else{
+                    this.white.setPosition(localStorage.whitePx,localStorage.whitePy);
+                    this.black.setPosition(localStorage.blackPx,localStorage.blackPy);
+                    this.whiteTick.active = false;
+                    this.blackTick.active = true;
+                    this.brownTick.active = false;
+                    this.blueTick.active = false;
+                    this.redTick.active = false;
+                }
             }
-            cc.sys.localStorage.colorClickTimes = parseInt(cc.sys.localStorage.colorClickTimes) + 1;
-            this.fiveClickTimes();
         },this);
 
         this.blue.on('touchstart',function(){
-            if(this.blue.x == localStorage.bluePx){
-                this.blue.setPosition(localStorage.redPx,localStorage.redPy);
-                this.red.setPosition(localStorage.bluePx,localStorage.bluePy);
-                this.whiteTick.active = false;
-                this.blackTick.active = false;
-                this.brownTick.active = false;
-                this.blueTick.active = false;
-                this.redTick.active = true;
-            }else{
-                this.red.setPosition(localStorage.redPx,localStorage.redPy);
-                this.blue.setPosition(localStorage.bluePx,localStorage.bluePy);
-                this.whiteTick.active = false;
-                this.blackTick.active = false;
-                this.brownTick.active = false;
-                this.blueTick.active = false;
-                this.redTick.active = true;
+            if(localStorage.newCarColor == 'blue'){
+                if(this.blue.x == localStorage.bluePx){
+                    this.blue.setPosition(localStorage.redPx,localStorage.redPy);
+                    this.red.setPosition(localStorage.bluePx,localStorage.bluePy);
+                    this.whiteTick.active = false;
+                    this.blackTick.active = false;
+                    this.brownTick.active = false;
+                    this.blueTick.active = false;
+                    this.redTick.active = true;
+                }else{
+                    this.red.setPosition(localStorage.redPx,localStorage.redPy);
+                    this.blue.setPosition(localStorage.bluePx,localStorage.bluePy);
+                    this.whiteTick.active = false;
+                    this.blackTick.active = false;
+                    this.brownTick.active = false;
+                    this.blueTick.active = false;
+                    this.redTick.active = true;
+                }
             }
-            cc.sys.localStorage.colorClickTimes = parseInt(cc.sys.localStorage.colorClickTimes) + 1;
-            this.fiveClickTimes();
         },this);
 
         this.red.on('touchstart',function(){
-            if(this.red.x == localStorage.redPx){
-                this.blue.setPosition(localStorage.redPx,localStorage.redPy);
-                this.red.setPosition(localStorage.bluePx,localStorage.bluePy);
-                this.whiteTick.active = false;
-                this.blackTick.active = false;
-                this.brownTick.active = false;
-                this.blueTick.active = true;
-                this.redTick.active = false;
-            }else{
-                this.red.setPosition(localStorage.redPx,localStorage.redPy);
-                this.blue.setPosition(localStorage.bluePx,localStorage.bluePy);
-                this.whiteTick.active = false;
-                this.blackTick.active = false;
-                this.brownTick.active = false;
-                this.blueTick.active = true;
-                this.redTick.active = false;
+            if(localStorage.newCarColor == 'red'){
+                if(this.red.x == localStorage.redPx){
+                    this.blue.setPosition(localStorage.redPx,localStorage.redPy);
+                    this.red.setPosition(localStorage.bluePx,localStorage.bluePy);
+                    this.whiteTick.active = false;
+                    this.blackTick.active = false;
+                    this.brownTick.active = false;
+                    this.blueTick.active = true;
+                    this.redTick.active = false;
+                }else{
+                    this.red.setPosition(localStorage.redPx,localStorage.redPy);
+                    this.blue.setPosition(localStorage.bluePx,localStorage.bluePy);
+                    this.whiteTick.active = false;
+                    this.blackTick.active = false;
+                    this.brownTick.active = false;
+                    this.blueTick.active = true;
+                    this.redTick.active = false;
+                }
             }
-            cc.sys.localStorage.colorClickTimes = parseInt(cc.sys.localStorage.colorClickTimes) + 1;
-            this.fiveClickTimes();
         },this);
 
         this.brown.on('touchstart',function(){
-            if(this.brown.x == localStorage.brownPx){
-                this.brown.setPosition(localStorage.confirmBtnPx,localStorage.confirmBtnPy);
-                this.confirmBtn.setPosition(localStorage.brownPx,localStorage.brownPy);
-                this.whiteTick.active = false;
-                this.blackTick.active = false;
-                this.brownTick.active = true;
-                this.blueTick.active = false;
-                this.redTick.active = false;
-            }else{
-                this.confirmBtn.setPosition(localStorage.confirmBtnPx,localStorage.confirmBtnPy);
-                this.brown.setPosition(localStorage.brownPx,localStorage.brownPy);
-                this.whiteTick.active = false;
-                this.blackTick.active = false;
-                this.brownTick.active = false;
-                this.blueTick.active = false;
-                this.redTick.active = false;
+            if(localStorage.newCarColor == 'brown'){
+                if(this.brown.x == localStorage.brownPx){
+                    this.brown.setPosition(localStorage.confirmBtnPx,localStorage.confirmBtnPy);
+                    this.confirmBtn.setPosition(localStorage.brownPx,localStorage.brownPy);
+                    this.whiteTick.active = false;
+                    this.blackTick.active = false;
+                    this.brownTick.active = false;
+                    this.blueTick.active = false;
+                    this.redTick.active = false;
+                }else{
+                    this.confirmBtn.setPosition(localStorage.confirmBtnPx,localStorage.confirmBtnPy);
+                    this.brown.setPosition(localStorage.brownPx,localStorage.brownPy);
+                    this.whiteTick.active = false;
+                    this.blackTick.active = false;
+                    this.brownTick.active = false;
+                    this.blueTick.active = false;
+                    this.redTick.active = false;
+                }
             }
-            cc.sys.localStorage.colorClickTimes = parseInt(cc.sys.localStorage.colorClickTimes) + 1;
-            this.fiveClickTimes();
-        },this);
-
-        
-    },
-
-    fiveClickTimes:function(){
-        if(cc.sys.localStorage.colorClickTimes > 5 ){
-            cc.log('end');
-            
-        }
+        },this); 
     },
 
     // use this for initialization
