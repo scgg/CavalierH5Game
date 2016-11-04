@@ -26,6 +26,11 @@ cc.Class({
             default:null,
             type:cc.Node,
         },
+        blackTick:cc.Node,
+        brownTick:cc.Node,
+        whiteTick:cc.Node,
+        blueTick:cc.Node,
+        redTick:cc.Node,
     },
 
     // use this for initialization
@@ -97,6 +102,11 @@ cc.Class({
                 cc.sys.localStorage.carColor = parseInt(cc.sys.localStorage.carColor) - 4;
                 cc.sys.localStorage.newCarColor = 'black';
             }
+            this.blackTick.active = false;
+            this.brownTick.active = false;
+            this.whiteTick.active = false;
+            this.blueTick.active = false;
+            this.redTick.active = false;
         },this);
     },
 

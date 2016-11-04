@@ -34,7 +34,7 @@ cc.Class({
         cc.sys.localStorage.gold = 220;
         cc.audioEngine.playMusic(this.bgAudio,true);
         cc.audioEngine.setVolume(this.bgAudio,0.5);
-        this.ajax();
+        // this.ajax();
     },
 
      
