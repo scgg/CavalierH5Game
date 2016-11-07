@@ -48,7 +48,7 @@ cc.Class({
             gold: localStorage.gold,
         }, function (data) {
             if(data.code == 200){
-                cc.log('success!');
+                cc.log('gameOne');
             }
         }, 'json')
     },
@@ -62,13 +62,14 @@ cc.Class({
                 var newGold = parseInt(gold);
                 cc.sys.localStorage.gold = newGold + 50;
                 cc.sys.localStorage.game = 1;
+                this.ajax();
             }
 
             this.schedule(function () {
                 this.gamesuccess.active = true;
                 // var self = this;
                 cc.audioEngine.playEffect(this.effect, false);
-                // this.ajax();
+
             }, 1, 0, 2);
 
             cc.log("Node Rotation Y: " + this.speed.y * 100);

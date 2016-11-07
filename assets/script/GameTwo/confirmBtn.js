@@ -23,22 +23,22 @@ cc.Class({
             url:cc.AudioClip,
         },
     },
-    // ajax: function () {
-    //     var openid = $('#openid').val();
-    //     $.post("api.php", {
-    //         act: 'edit',
-    //         openid: openid,
-    //         gold: localStorage.gold,
-    //     }, function (data) {
-    //         if(data.code == 200){
-    //             cc.log('success!');
-    //         }
-    //     }, 'json')
-    // },
+
+    ajax: function () {
+        var openid = $('#openid').val();
+        $.post("api.php", {
+            act: 'edit',
+            openid: openid,
+            gold: localStorage.gold,
+        }, function (data) {
+            if(data.code == 200){
+                cc.log('gameThree');
+            }
+        }, 'json');
+    },
 
     // use this for initialization
     onLoad: function () {
-        // this.ajax();
         this.success.active = false;
         this.failure.active = false;
         this.Btn.on('touchstart',function(){
@@ -52,6 +52,7 @@ cc.Class({
                     var newGold = parseInt(gold);
                     cc.sys.localStorage.gold = newGold + 50;
                     cc.sys.localStorage.game = 2;
+                    this.ajax();
                 } 
             }else{
                 this.failure.active = true;

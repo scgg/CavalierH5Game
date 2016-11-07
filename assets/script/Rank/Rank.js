@@ -38,23 +38,23 @@ cc.Class({
     },
 
 
-    doPost: function (url, data) {
-        createxmlHttpRequest();
-        xmlHttp.open("POST", 'http://192.168.1.110/api.php');
-        xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xmlHttp.send(data);
-        xmlHttp.onreadystatechange = function () {
-            if ((xmlHttp.readyState == 4) && (xmlHttp.status == 200)) {
-                alert('success');
-            } else {
-                alert('fail');
-            }
-        };
-    },
+    // doPost: function (url, data) {
+    //     createxmlHttpRequest();
+    //     xmlHttp.open("POST", 'http://192.168.1.110/api.php');
+    //     xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    //     xmlHttp.send(data);
+    //     xmlHttp.onreadystatechange = function () {
+    //         if ((xmlHttp.readyState == 4) && (xmlHttp.status == 200)) {
+    //             alert('success');
+    //         } else {
+    //             alert('fail');
+    //         }
+    //     };
+    // },
     openXhr: function () {
         var xhr = new XMLHttpRequest();
         var self = this;
-        xhr.open("POST", "http://192.168.1.110/api.php");
+        xhr.open("POST", "http://www.puzzle-idea.com/m/hunlongyu/CavalierH5/api.php");
         xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4) {

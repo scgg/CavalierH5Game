@@ -28,6 +28,20 @@ cc.Class({
         },
     },
 
+    ajax: function () {
+        
+        var openid = $('#openid').val();
+        $.post("api.php", {
+            act: 'edit',
+            openid: openid,
+            gold: localStorage.gold,
+        }, function (data) {
+            if(data.code == 200){
+                cc.log('gameTwo');
+            }
+        }, 'json');
+    },
+
     // use this for initialization
     onLoad: function () {
         this.GameSuccess.active = false;
@@ -48,6 +62,7 @@ cc.Class({
                         var newGold = parseInt(gold);
                         cc.sys.localStorage.gold = newGold + 50;
                         cc.sys.localStorage.game = 3;
+                        this.ajax();
                     }
                 }, 3, 0, 3);
             } else {
