@@ -16,9 +16,9 @@ var answer = [
 	['科沃兹采用大量结构胶，总长度达( )米，不仅使车体轻量化，还有效增加车身的结构刚性、强度和耐久性能', 'A、20', 'B、26', 'C、30', 'D、34','B'],
 	['科沃兹采用电动加热外后视镜，在-5℃下，仅需( )分钟即可去除后视镜雨雪，提高用车安全性', 'A、4', 'B、3', 'C、2', 'D、1','B'],
 	['科沃兹由上汽通用汽车( )工厂负责制造', 'A、武汉', 'B、烟台', 'C、沈阳', 'D、上海','A'],
-	['科沃兹MT车型具有5.4L/100KM的同级最低油耗表现，桑塔纳MT车型的最低油耗是( )L/100km。相比之下，科沃兹油耗优势明显', 'A、5.9', 'B、6.0', 'C、6。1', 'D、6.2','B'],
+	['科沃兹MT车型具有5.4L/100KM的同级最低油耗表现，桑塔纳MT车型的最低油耗是( )L/100km。相比之下，科沃兹油耗优势明显', 'A、5.9', 'B、6.0', 'C、6.1', 'D、6.2','B'],
 	['科沃兹软包覆达到( )搭配马鞍棕时尚色：提升舒适性和豪华感', 'A、100%', 'B、95%', 'C、90%', 'D、85%','A'],
-	['科沃兹使用( )寸固特异安乘轮胎：以其卓越的湿地，刹车及操控性能，让驾驶者从容应对湿滑路面的挑战，在行驶途中更添一份安心和信心', 'A、14’/15’', 'B、15’/16’', 'C、16’/17’', 'D、17’/18’','B'],
+	['科沃兹使用( )寸固特异安乘轮胎：以其卓越的湿地、刹车及操控性能，让驾驶者从容应对湿滑路面的挑战，在行驶途中更添一份安心和信心', 'A、14’/15’', 'B、15’/16’', 'C、16’/17’', 'D、17’/18’','B'],
 	['科沃兹大灯多棱面：多达( )多个棱面切割，更为精巧美观，提升光效质感', 'A、130', 'B、120', 'C、110', 'D、100','D'],
 	['科沃兹后排地板平整性：克服内部架构布局挑战，低至( )cm凸起，为后排乘员提供更舒适的乘坐空间', 'A、3', 'B、4', 'C、5', 'D、6','B'],
 	['科沃兹经过超( )万公里的耐久性试验，从最炎热到最严寒，历经各种恶劣环境的终极考验', 'A、300', 'B、350', 'C、400', 'D、450','A'],
@@ -44,7 +44,7 @@ var answer = [
 	['与竞品相比，以下ESC系统中，不是科沃兹独有的是哪项？( )', 'A、EBP电子预制动', 'B、TVBB过弯辅助系统', 'C、SLS直线稳定性控制系统', 'D、HSA坡道辅助系统','D'],
 	['以下车型配备倒车影像的是( )', 'A、昕锐', 'B、福睿斯', 'C、桑塔纳', 'D、科沃兹','D'],
 	['下列车型中配备智能启停系统的车型是( )', 'A、昕锐', 'B、福睿斯', 'C、桑塔纳', 'D、科沃兹','D'],
-	['科沃兹配备的百度Car Life系统包含四大常用功能，以下不是这四大功能的是( )', 'A、发现（找车位、去加油等周边搜索）', 'B、电话（导入电话簿）', 'C、电台记忆', 'D、音乐（本地、在线）','C'],
+	['科沃兹配备的百度CarLife系统包含四大常用功能，以下不是这四大功能的是( )', 'A、发现（找车位、去加油等周边搜索）', 'B、电话（导入电话簿）', 'C、电台记忆', 'D、音乐（本地、在线）','C'],
 	['科沃兹智能启停技术具有的优点中，不包含( )', 'A、环保节能', 'B、设计轻量化', 'C、可靠耐用', 'D、可关闭式','B'],
 	['胎压监测系统能提升用车的便利性和安全性，科沃兹采用的是直接式智能独立数显胎压监测系统，而桑塔纳用的是间接式胎压监测系统，且此项配置在桑塔纳( )才有', 'A、低配', 'B、中配', 'C、高配', 'D、入门级','C'],
 	['科沃兹采用越级主动安全配备，ESC具有14项子功能，带给客户安心的行车安全，而桑塔纳仅配备( )', 'A、EBP电子预制动', 'B、TVBB过弯辅助系统', 'C、SLS直线稳定性控制系统', 'D、ABS','D'],
@@ -144,16 +144,42 @@ cc.Class({
     },
 
 
+    randomAn:function(){
+        var an = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59];
+        function randomSort(a,b){
+            return Math.random() > 0.5 ? -1 : 1;
+        }
+        an.sort(randomSort);
+        var da = [];
+        for(var i = 0;i <= 11;i ++){
+            da[i] = an[i];
+        }
+        var ca = da.join(","); //数组转字符串
+        if(localStorage.aa == undefined || localStorage.aa == null){
+            localStorage.aa = ca;
+        }
+    },
+
     showAnswer:function(){
+        this.randomAn();
+        var la = localStorage.aa.split(",");
+        console.log(la);
+        var lb = la[0];
+        console.log(lb);
 
         if(localStorage.nextAnswer == undefined){
-            var an = parseInt(cc.random0To1()*60,10);
-            this.subject.string = answer[an][0];
-            this.A.string = answer[an][1];
-            this.B.string = answer[an][2];
-            this.C.string = answer[an][3];
-            this.D.string = answer[an][4];
-            cc.sys.localStorage.correctAnswer = answer[an][5];
+            // var an = parseInt(cc.random0To1()*60,10);
+            this.subject.string = answer[lb][0];
+            this.A.string = answer[lb][1];
+            this.B.string = answer[lb][2];
+            this.C.string = answer[lb][3];
+            this.D.string = answer[lb][4];
+            cc.sys.localStorage.correctAnswer = answer[lb][5];
+            var lc = localStorage.aa.split(",");
+            lc.splice(0,1);
+            console.log(lc);
+            localStorage.aa = lc;
+
         }
         
     },
@@ -222,6 +248,7 @@ cc.Class({
     addAnswerTimes: function(){
         if(localStorage.AnswerTimes == undefined){
             localStorage.AnswerTimes = 0;
+            // localStorage.da=[];
         }
     },
     showtishu:function(){
@@ -236,6 +263,7 @@ cc.Class({
         if(localStorage.AnswerTimes > 10){
             cc.director.loadScene(answerToScene);
             localStorage.removeItem('AnswerTimes');
+            localStorage.removeItem('aa');
         }
     },
 
